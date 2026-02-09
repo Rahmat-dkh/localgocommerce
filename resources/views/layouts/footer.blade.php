@@ -10,7 +10,7 @@
                     <img src="{{ asset('images/logo_localgo.png') }}" alt="LocalGo"
                         class="h-16 w-auto object-contain p-2 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 group-hover:scale-105 transition-transform duration-300">
                     <span class="text-white font-black text-2xl tracking-tighter">
-                        Lokal<span class="text-primary group-hover:text-white transition-colors duration-300">Go</span>
+                        Local<span class="text-primary group-hover:text-white transition-colors duration-300">Go</span>
                     </span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">

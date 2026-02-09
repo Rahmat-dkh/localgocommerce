@@ -15,7 +15,7 @@
                                 class="relative h-8 md:h-11 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(56,189,248,0.5)] rounded-xl">
                             <span
                                 class="relative text-white font-black text-xl md:text-2xl tracking-tighter group-hover:text-cyan-400 transition-colors duration-300">
-                                Lokal<span class="text-cyan-400 group-hover:text-white">Go</span>
+                                Local<span class="text-cyan-400 group-hover:text-white">Go</span>
                             </span>
                         </a>
                     </div>

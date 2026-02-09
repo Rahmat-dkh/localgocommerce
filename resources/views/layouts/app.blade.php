@@ -6,7 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? config('app.name', 'LocalGo') }} - Marketplace UMKM Indonesia</title>
+    <meta name="description"
+        content="{{ $description ?? 'LocalGo Commerce - Platform e-commerce terpercaya untuk produk UMKM lokal Indonesia. Dukung ekonomi lokal dengan belanja produk kreatif berkualitas.' }}">
+    <meta name="keywords" content="UMKM Indonesia, marketplace lokal, produk kreatif, e-commerce Indonesia, LocalGo">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo_localgo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo_localgo.png') }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $title ?? config('app.name', 'LocalGo') }} - Marketplace UMKM Indonesia">
+    <meta property="og:description"
+        content="{{ $description ?? 'Platform e-commerce terpercaya untuk produk UMKM lokal Indonesia' }}">
+    <meta property="og:image" content="{{ asset('images/logo_localgo.png') }}">
+    <meta property="og:site_name" content="LocalGo Commerce">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url()->current() }}">
+    <meta name="twitter:title" content="{{ $title ?? config('app.name', 'LocalGo') }}">
+    <meta name="twitter:description"
+        content="{{ $description ?? 'Platform e-commerce terpercaya untuk produk UMKM lokal Indonesia' }}">
+    <meta name="twitter:image" content="{{ asset('images/logo_localgo.png') }}">
+
+    <!-- Structured Data for Organization & Logo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "LocalGo Commerce",
+        "url": "{{ config('app.url') }}",
+        "logo": "{{ asset('images/logo_localgo.png') }}",
+        "description": "Platform e-commerce terpercaya untuk produk UMKM lokal Indonesia",
+        "sameAs": [
+            "https://github.com/Rahmat-dkh/localgocommerce"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+62-857-1296-6082",
+            "contactType": "Customer Service",
+            "email": "localgocommerce@gmail.com"
+        }
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

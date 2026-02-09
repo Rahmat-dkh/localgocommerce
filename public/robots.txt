@@ -1,2 +1,20 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow admin & vendor areas from search engines
+Disallow: /admin/
+Disallow: /vendor/
+Disallow: /dashboard/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /profile/
+
+# Allow public pages
+Allow: /products
+Allow: /categories
+Allow: /about
+Allow: /contact
+Allow: /shop
