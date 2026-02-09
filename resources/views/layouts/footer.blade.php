@@ -6,9 +6,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
             <!-- Brand Column -->
             <div data-aos="fade-up" class="text-center md:text-left">
-                <a href="/" class="inline-block mb-8">
+                <a href="/" class="inline-flex items-center gap-4 mb-8 group">
                     <img src="{{ asset('images/logo_localgo.png') }}" alt="LocalGo"
-                        class="h-16 w-auto object-contain p-2 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:scale-105 transition-transform duration-300">
+                        class="h-16 w-auto object-contain p-2 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <span class="text-white font-black text-2xl tracking-tighter">
+                        Lokal<span class="text-primary group-hover:text-white transition-colors duration-300">Go</span>
+                    </span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm mx-auto md:mx-0">
                     Memberdayakan UMKM Indonesia melalui teknologi e-commerce startup modern. Bersama LocalGo, produk
@@ -126,7 +129,7 @@
 
         <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <p class="text-slate-500 text-xs font-bold text-center md:text-left">
-                &copy; {{ date('Y') }} LocalGo Commerce. Build for P2MW Startup Competition.
+                &copy; {{ date('Y') }} LocalGo Commerce.
             </p>
             <div class="flex items-center justify-center md:justify-end gap-6 flex-wrap">
                 <!-- Payment SVGs (Clean & Professional) -->

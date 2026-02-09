@@ -3,7 +3,7 @@
 <div data-aos="fade-up" class="group relative flex flex-col h-full">
     <!-- Image Area -->
     <div
-        class="relative aspect-square rounded-2xl sm:rounded-[2.5rem] overflow-hidden bg-neutral-dark/5 transition-all duration-700 group-hover:bg-primary/5 shadow-inner">
+        class="relative aspect-square rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden bg-neutral-dark/5 transition-all duration-700 group-hover:bg-primary/5 shadow-inner">
         <!-- Floating Tag -->
         <div class="absolute top-3 left-3 z-20">
             <span
@@ -49,15 +49,15 @@
     </div>
 
     <!-- Content Area -->
-    <div class="mt-4 sm:mt-8 px-2 flex-grow">
-        <div class="flex items-center gap-4 mb-3">
+    <div class="mt-3 sm:mt-8 px-1 sm:px-2 flex-grow">
+        <div class="flex items-center gap-2 sm:gap-4 mb-2 sm:mb-3">
             <span
-                class="px-3 py-1 bg-innovation/10 text-innovation text-[10px] font-black uppercase rounded-lg">UMKM</span>
+                class="px-2 py-0.5 sm:px-3 sm:py-1 bg-innovation/10 text-innovation text-[9px] sm:text-[10px] font-black uppercase rounded-md sm:rounded-lg">UMKM</span>
             <span
-                class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{{ now()->format('d/m/Y') }}</span>
+                class="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">{{ now()->format('d/m/Y') }}</span>
         </div>
         <h3
-            class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-tight group-hover:text-primary transition-colors mb-3">
+            class="text-sm sm:text-lg font-black text-slate-900 tracking-tight leading-tight group-hover:text-primary transition-colors mb-2 sm:mb-3 line-clamp-2">
             {{ $product->name }}
         </h3>
 
@@ -68,10 +68,10 @@
     </div>
 
     <!-- Footer Area -->
-    <div class="mt-8 px-2 flex items-center justify-between pt-6 border-t border-gray-50">
+    <div class="mt-4 sm:mt-8 px-1 sm:px-2 flex items-center justify-between pt-4 sm:pt-6 border-t border-gray-50">
         <div class="flex flex-col">
-            <span class="text-2xl font-black text-slate-900 tracking-tight">
-                <span class="text-sm font-bold vertical-align-top">Rp</span>
+            <span class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
+                <span class="text-[10px] sm:text-sm font-bold vertical-align-top">Rp</span>
                 {{ number_format($product->price, 0, ',', '.') }}
             </span>
         </div>

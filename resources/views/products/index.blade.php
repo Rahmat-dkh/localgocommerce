@@ -1,10 +1,10 @@
 <x-app-layout>
-    <div class="pt-32 lg:pt-48 pb-24">
+    <div class="pt-28 lg:pt-40 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header Section -->
-            <div data-aos="fade-down" class="text-center mb-16">
+            <div class="text-center mb-16">
                 <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">Eksplorasi UMKM</div>
-                <h1 class="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-none mb-8">
+                <h1 class="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-none mb-8">
                     Koleksi <span class="text-primary italic">Terbaik</span>.
                 </h1>
                 <div class="max-w-2xl mx-auto px-4">
@@ -12,8 +12,7 @@
                         @if(request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
-                        <input type="text" name="search" value="{{ request('search') }}"
-                            placeholder="Cari produk UMKM kreatif..."
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari produk..."
                             class="w-full px-8 py-5 bg-white border-2 border-slate-100 rounded-3xl text-lg font-bold text-slate-900 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all shadow-xl shadow-slate-200/50">
                         <button type="submit"
                             class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-primary text-white rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
@@ -27,9 +26,9 @@
             </div>
 
             <!-- Horizontal Category Sub-Nav -->
-            <div data-aos="fade-up" class="w-full border-b border-gray-100 mb-20 overflow-x-auto no-scrollbar">
+            <div class="w-full border-b border-gray-100 mb-20 overflow-x-auto no-scrollbar">
                 <div class="flex justify-center space-x-12 min-w-max pb-4 px-4 overflow-x-auto no-scrollbar">
-                    <a href="{{ route('products.index') }}"
+                    <a href="{{ route('products.index') }}" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
                         class="text-[17px] font-bold transition-all relative pb-4 {{ !request('category') && !request()->routeIs('categories.*') ? 'text-primary' : 'text-gray-400 hover:text-primary' }}">
                         Semua
                         @if(!request('category') && !request()->routeIs('categories.*'))
@@ -42,6 +41,7 @@
                     </a>
                     @foreach(\App\Models\Category::all() as $cat)
                         <a href="{{ route('products.index', ['category' => $cat->id]) }}"
+                            onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
                             class="text-[17px] font-bold transition-all relative pb-4 {{ request('category') == $cat->id ? 'text-primary' : 'text-gray-400 hover:text-primary' }}">
                             {{ $cat->name }}
                             @if(request('category') == $cat->id)
@@ -61,7 +61,7 @@
             </div>
 
             <!-- Pagination: Custom Style -->
-            <div data-aos="fade-up" class="mt-24 flex justify-center">
+            <div class="mt-24 flex justify-center">
                 <div class="glass p-4 rounded-3xl">
                     {{ $products->links() }}
                 </div>

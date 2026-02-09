@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Hero Section: Premium Startup Look -->
-    <div class="relative pt-32 pb-24 lg:pt-56 lg:pb-40 overflow-hidden bg-white">
+    <div class="relative pt-12 pb-12 lg:pt-32 lg:pb-40 overflow-hidden bg-white">
         <!-- Abstract Shapes -->
         <div
             class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
@@ -13,7 +13,7 @@
 
 
             <h1 data-aos="fade-up" data-aos-delay="100"
-                class="text-6xl lg:text-[7rem] font-black text-neutral-dark mb-10 tracking-tightest leading-[0.9] lg:max-w-5xl mx-auto">
+                class="text-4xl sm:text-5xl lg:text-[7rem] font-black text-neutral-dark mb-4 sm:mb-10 tracking-tightest leading-[0.9] lg:max-w-5xl mx-auto">
                 Lokal Kini <br>
                 <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-dark to-innovation">Beraksi
@@ -21,15 +21,15 @@
             </h1>
 
             <p data-aos="fade-up" data-aos-delay="200"
-                class="max-w-3xl mx-auto text-lg lg:text-xl text-neutral-dark/60 mb-14 font-medium leading-relaxed">
+                class="max-w-3xl mx-auto text-base lg:text-xl text-neutral-dark/60 mb-8 sm:mb-14 font-medium leading-relaxed px-4 sm:px-0">
                 Platform UMKM modern yang memberdayakan kreativitas lokal dengan teknologi e-commerce startup yang siap
                 mendunia. Temukan produk pilihan dari pengrajin terbaik Indonesia.
             </p>
 
             <div data-aos="fade-up" data-aos-delay="300"
-                class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
                 <a href="{{ route('products.index') }}"
-                    class="btn-primary w-full sm:w-auto text-lg px-12 py-5 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
+                    class="btn-primary w-full sm:w-auto text-sm sm:text-lg px-8 sm:px-12 py-3.5 sm:py-5 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
                     Beli Produk Lokal
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -37,7 +37,7 @@
                     </svg>
                 </a>
                 <a href="{{ route('categories.index') }}"
-                    class="w-full sm:w-auto px-12 py-5 bg-white text-neutral-dark font-black rounded-3xl border-2 border-primary/10 hover:border-primary/30 hover:bg-neutral-light transition-all shadow-xl shadow-neutral-dark/5 flex items-center justify-center">
+                    class="btn-primary w-full sm:w-auto text-sm sm:text-lg px-8 sm:px-12 py-3.5 sm:py-5 shadow-2xl shadow-primary/30 flex items-center justify-center !bg-white !text-neutral-dark border-2 border-primary/10 hover:!border-primary/30 hover:!bg-neutral-light">
                     Jelajahi UMKM
                 </a>
             </div>
@@ -88,7 +88,7 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                 @foreach(\App\Models\Product::with('category')->take(8)->get() as $product)
                     <x-product-card :product="$product" />
                 @endforeach

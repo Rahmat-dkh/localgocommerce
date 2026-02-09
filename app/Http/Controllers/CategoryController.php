@@ -15,9 +15,9 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
-    public function show(string $id)
+    public function show(string $slug)
     {
-        $category = \App\Models\Category::with('products')->findOrFail($id);
+        $category = \App\Models\Category::where('slug', $slug)->with('products')->firstOrFail();
         return view('categories.show', compact('category'));
     }
 

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-32 lg:pt-48 pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="pt-36 lg:pt-52 pb-24 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="glass rounded-2xl sm:rounded-[3rem] overflow-hidden p-5 sm:p-8 lg:p-16 border-white/40">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">

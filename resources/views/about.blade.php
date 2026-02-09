@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-32 lg:pt-48 pb-24 overflow-hidden relative">
+    <div class="pt-28 lg:pt-40 pb-24 overflow-hidden relative">
         <!-- Abstract Shapes -->
         <div
             class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
@@ -13,7 +13,7 @@
                 <div data-aos="fade-down" class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">About
                     LocalGo</div>
                 <h1 data-aos="fade-up"
-                    class="text-5xl lg:text-7xl font-black text-neutral-dark tracking-tighter leading-none mb-8">
+                    class="text-3xl lg:text-5xl font-black text-neutral-dark tracking-tighter leading-none mb-8">
                     Misi Kami: <span class="text-primary italic">Globalisasi</span> UMKM.
                 </h1>
                 <p data-aos="fade-up" data-aos-delay="100"

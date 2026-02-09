@@ -2,30 +2,34 @@
     <nav
         class="fixed top-0 w-full z-50 bg-primary border-b border-white/5 shadow-xl shadow-primary/20 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center h-14 md:h-16 gap-4 md:gap-8">
+            <div class="flex items-center h-16 md:h-20 gap-4 md:gap-8">
                 <!-- Group Left: Logo & Menu -->
                 <div class="flex items-center gap-10">
                     <!-- Left: Logo -->
                     <div class="flex-none flex items-center">
-                        <a href="/" class="flex items-center group relative">
+                        <a href="/" class="flex items-center group relative gap-3">
                             <div
                                 class="absolute -inset-2 bg-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition duration-500">
                             </div>
                             <img src="{{ asset('images/logo_localgo.png') }}" alt="LocalGo"
-                                class="relative h-7 md:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(56,189,248,0.5)] rounded-xl">
+                                class="relative h-8 md:h-11 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(56,189,248,0.5)] rounded-xl">
+                            <span
+                                class="relative text-white font-black text-xl md:text-2xl tracking-tighter group-hover:text-cyan-400 transition-colors duration-300">
+                                Lokal<span class="text-cyan-400 group-hover:text-white">Go</span>
+                            </span>
                         </a>
                     </div>
 
                     <!-- Left: Menu Items -->
                     <div class="hidden lg:flex space-x-6">
                         <a href="{{ route('home') }}"
-                            class="text-xs font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
+                            class="text-sm font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
                             Home
                             <span
                                 class="absolute bottom-1.5 left-4 right-4 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center {{ request()->routeIs('home') ? 'scale-x-100' : '' }}"></span>
                         </a>
                         <a href="{{ route('products.index') }}"
-                            class="text-xs font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
+                            class="text-sm font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
                             Produk
                             <span
                                 class="absolute bottom-1.5 left-4 right-4 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center {{ request()->routeIs('products.*') ? 'scale-x-100' : '' }}"></span>
@@ -33,7 +37,7 @@
                         <!-- Kategori Dropdown -->
                         <div x-data="{ openCategory: false }" class="relative" @click.away="openCategory = false">
                             <button @click="openCategory = !openCategory"
-                                class="text-xs font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide flex items-center gap-1">
+                                class="text-sm font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide flex items-center gap-1">
                                 Kategori
                                 <svg class="w-3 h-3 transition-transform duration-200"
                                     :class="{ 'rotate-180': openCategory }" fill="none" stroke="currentColor"
@@ -58,7 +62,9 @@
                                 <!-- Category List -->
                                 <div class="max-h-64 overflow-y-auto py-2">
                                     @php
-                                        $categories = \App\Models\Category::withCount('products')->orderBy('name')->get();
+                                        $categories = cache()->remember('navbar_categories', 3600, function () {
+                                            return \App\Models\Category::withCount('products')->orderBy('name')->get();
+                                        });
                                     @endphp
 
                                     @forelse($categories as $category)
@@ -89,7 +95,7 @@
                             </div>
                         </div>
                         <a href="{{ route('about') }}"
-                            class="text-xs font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
+                            class="text-sm font-bold text-white hover:text-cyan-400 transition-all duration-300 relative group px-4 py-2 rounded-full hover:bg-white/10 tracking-wide">
                             Tentang
                             <span
                                 class="absolute bottom-1.5 left-4 right-4 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center {{ request()->routeIs('about') ? 'scale-x-100' : '' }}"></span>
@@ -297,7 +303,9 @@
                         <div x-show="openMobileCategory" x-collapse
                             class="mt-1 ml-6 space-y-0.5 border-l border-white/10 pl-4">
                             @php
-                                $mobileCategories = \App\Models\Category::withCount('products')->orderBy('name')->get();
+                                $mobileCategories = cache()->remember('navbar_categories', 3600, function () {
+                                    return \App\Models\Category::withCount('products')->orderBy('name')->get();
+                                });
                             @endphp
                             @forelse($mobileCategories as $cat)
                                 <a href="{{ route('categories.show', $cat->slug) }}"

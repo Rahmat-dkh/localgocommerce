@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-32 lg:pt-48 pb-24">
+    <div class="pt-28 lg:pt-40 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div
@@ -15,7 +15,7 @@
                             Kembali ke Kategori
                         </a>
                     </div>
-                    <h1 class="text-5xl lg:text-7xl font-black text-neutral-dark mb-4 tracking-tighter leading-none">
+                    <h1 class="text-3xl lg:text-5xl font-black text-neutral-dark mb-4 tracking-tighter leading-none">
                         Kategori <span class="text-primary">{{ $category->name }}</span>.
                     </h1>
                     <p class="text-neutral-dark/40 font-medium max-w-xl text-lg lg:text-xl">{{ $category->description }}

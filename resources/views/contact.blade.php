@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Hero Section -->
-    <div class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <div class="relative pt-28 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-white">
         <!-- Abstract Shapes -->
         <div
             class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
@@ -10,7 +10,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-            <h1 class="text-5xl lg:text-7xl font-black text-neutral-dark mb-8 tracking-tighter leading-tight">
+            <h1 class="text-3xl lg:text-5xl font-black text-neutral-dark mb-8 tracking-tighter leading-tight">
                 Hubungi <span class="text-primary">Kami.</span>
             </h1>
             <p class="max-w-2xl mx-auto text-lg text-slate-500 font-medium leading-relaxed">
