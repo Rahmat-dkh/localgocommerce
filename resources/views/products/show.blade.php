@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="pt-36 lg:pt-52 pb-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="glass rounded-2xl sm:rounded-[3rem] overflow-hidden p-5 sm:p-8 lg:p-16 border-white/40">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+    <div class="pt-6 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-2xl sm:rounded-[2rem] overflow-hidden p-6 lg:p-10 border-white/40">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                     <!-- Gallery Section -->
                     <div data-aos="fade-right" class="space-y-6">
                         <!-- Main Image -->

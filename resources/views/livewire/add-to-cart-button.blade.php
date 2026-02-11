@@ -57,11 +57,11 @@
         </button>
     @else
         <button wire:click="addToCart"
-            class="w-14 h-14 bg-innovation text-white rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-innovation/30 hover:bg-innovation-dark hover:scale-110 active:scale-95 group/btn relative overflow-hidden">
+            class="w-7 h-7 sm:w-10 sm:h-10 bg-innovation text-white rounded-[0.5rem] flex items-center justify-center transition-all duration-300 shadow-lg shadow-innovation/30 hover:bg-innovation-dark hover:scale-110 active:scale-95 group/btn relative overflow-hidden">
             <!-- Loading State -->
             <div wire:loading wire:target="addToCart"
                 class="absolute inset-0 bg-innovation flex items-center justify-center z-10">
-                <svg class="w-6 h-6 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+                <svg class="w-3 h-3 animate-spin text-white" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
@@ -70,11 +70,11 @@
             </div>
 
             @if($isAdded)
-                <svg class="w-6 h-6 animate-ping" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3 h-3 animate-ping" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                 </svg>
             @else
-                <svg class="w-6 h-6 transition-transform group-hover/btn:rotate-90" fill="none" stroke="currentColor"
+                <svg class="w-3 h-3 transition-transform group-hover/btn:rotate-90" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path>
                 </svg>

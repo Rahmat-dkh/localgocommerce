@@ -1,5 +1,5 @@
 <div wire:ignore.self x-data="{ isOpen: false }" x-on:open-wishlist-panel.window="isOpen = true" x-show="isOpen" x-cloak
-    @keydown.escape.window="isOpen = false" class="fixed inset-0 z-[60] overflow-hidden">
+    @keydown.escape.window="isOpen = false" class="fixed inset-0 z-[1001] overflow-hidden">
     <div class="absolute inset-0 bg-neutral-dark/40 backdrop-blur-sm transition-opacity" @click="isOpen = false"></div>
 
     <div class="fixed inset-y-0 right-0 max-w-full flex">

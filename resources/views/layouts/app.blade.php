@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="overflow-x-hidden">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -68,12 +68,12 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased text-neutral-dark bg-neutral-light overflow-x-hidden">
-    <div class="min-h-screen">
+<body class="font-sans antialiased text-neutral-dark bg-neutral-light">
+    <div class="min-h-screen" x-data="{ open: false, openMobileSearch: false }">
         @include('layouts.navigation')
 
         <!-- Page Content -->
-        <main class="pt-14 md:pt-16">
+        <main>
             {{ $slot }}
         </main>
 

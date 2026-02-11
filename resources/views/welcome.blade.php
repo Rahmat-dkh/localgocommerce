@@ -1,138 +1,113 @@
 <x-app-layout>
-    <!-- Hero Section: Premium Startup Look -->
-    <div class="relative pt-12 pb-12 lg:pt-32 lg:pb-40 overflow-hidden bg-white">
-        <!-- Abstract Shapes -->
-        <div
-            class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 -z-10 w-[500px] h-[500px] bg-innovation/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2">
-        </div>
+    <!-- Hero Section Removed -->
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Image Carousel -->
+    <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto pt-4 pb-2 px-4 sm:px-6 lg:px-8">
+            <div x-data="{ 
+                active: 0, 
+                count: 3,
+                images: [
+                    'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=1600',
+                    'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&q=80&w=1600',
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600'
+                ],
+                next() { this.active = (this.active + 1) % this.count },
+                prev() { this.active = (this.active - 1 + this.count) % this.count },
+                init() { setInterval(() => this.next(), 5000) }
+            }" class="relative overflow-hidden rounded-2xl shadow-lg aspect-[21/9] md:aspect-[3.2/1]">
+                <!-- Slides -->
+                <template x-for="(img, index) in images" :key="index">
+                    <div x-show="active === index" x-transition:enter="transition ease-out duration-1000"
+                        x-transition:enter-start="opacity-0 transform scale-110"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0" class="absolute inset-0">
+                        <img :src="img" class="w-full h-full object-cover" alt="Banner">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    </div>
+                </template>
 
+                <!-- Navigation Dots -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                    <template x-for="n in count" :key="n-1">
+                        <button @click="active = n-1" :class="active === n-1 ? 'bg-white w-8' : 'bg-white/50 w-2'"
+                            class="h-2 rounded-full transition-all duration-300"></button>
+                    </template>
+                </div>
 
-            <h1 data-aos="fade-up" data-aos-delay="100"
-                class="text-4xl sm:text-5xl lg:text-[7rem] font-black text-neutral-dark mb-4 sm:mb-10 tracking-tightest leading-[0.9] lg:max-w-5xl mx-auto">
-                Lokal Kini <br>
-                <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-dark to-innovation">Beraksi
-                    Global.</span>
-            </h1>
-
-            <p data-aos="fade-up" data-aos-delay="200"
-                class="max-w-3xl mx-auto text-base lg:text-xl text-neutral-dark/60 mb-8 sm:mb-14 font-medium leading-relaxed px-4 sm:px-0">
-                Platform UMKM modern yang memberdayakan kreativitas lokal dengan teknologi e-commerce startup yang siap
-                mendunia. Temukan produk pilihan dari pengrajin terbaik Indonesia.
-            </p>
-
-            <div data-aos="fade-up" data-aos-delay="300"
-                class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
-                <a href="{{ route('products.index') }}"
-                    class="btn-primary w-full sm:w-auto text-sm sm:text-lg px-8 sm:px-12 py-3.5 sm:py-5 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
-                    Beli Produk Lokal
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                <!-- Prev/Next Buttons (Desktop) -->
+                <button @click="prev()"
+                    class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors z-20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
-                </a>
-                <a href="{{ route('categories.index') }}"
-                    class="btn-primary w-full sm:w-auto text-sm sm:text-lg px-8 sm:px-12 py-3.5 sm:py-5 shadow-2xl shadow-primary/30 flex items-center justify-center !bg-white !text-neutral-dark border-2 border-primary/10 hover:!border-primary/30 hover:!bg-neutral-light">
-                    Jelajahi UMKM
-                </a>
-            </div>
-
-            <!-- Stats/Social Proof -->
-            <div data-aos="fade-up" data-aos-delay="400"
-                class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 lg:max-w-5xl mx-auto items-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                <div class="flex flex-col items-center border-r border-slate-100 last:border-r-0">
-                    <span class="text-4xl font-black text-neutral-dark mb-1">5+</span>
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">UMKM Terdaftar</span>
-                </div>
-                <div class="flex flex-col items-center border-r border-slate-100 last:border-r-0">
-                    <span class="text-4xl font-black text-neutral-dark mb-1">20+</span>
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Produk Terpilih</span>
-                </div>
-                <div class="flex flex-col items-center border-r border-slate-100 last:border-r-0">
-                    <span class="text-4xl font-black text-neutral-dark mb-1">100%</span>
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Transaksi Aman</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-4xl font-black text-neutral-dark mb-1">5.0/5</span>
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Rating Pembeli</span>
-                </div>
+                </button>
+                <button @click="next()"
+                    class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors z-20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Featured Section -->
-    <div class="py-32 bg-slate-50">
+    <!-- Featured Section (Rekomendasi) -->
+    <div class="pt-0 pb-8 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
-                <div data-aos="fade-right">
-                    <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">Pilihan UMKM</div>
-                    <h2 class="text-4xl lg:text-6xl font-black text-neutral-dark tracking-tighter leading-tight">
-                        Produk <span class="bg-primary/10 text-primary px-4 rounded-2xl">Terbaik</span> <br>Minggu Ini.
-                    </h2>
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-2">
+                    <h2 class="text-xl font-bold text-neutral-dark">Rekomendasi</h2>
+                    <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-md">Pilihan
+                        Terbaik</span>
                 </div>
-                <a data-aos="fade-left" href="{{ route('products.index') }}"
-                    class="inline-flex items-center gap-3 text-primary font-black group">
-                    <span class="text-sm uppercase tracking-widest">Semua Koleksi</span>
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center transition-all group-hover:translate-x-2 shadow-lg shadow-primary/20">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </div>
-                </a>
+                <a href="{{ route('products.index') }}" class="text-xs font-bold text-primary hover:underline">Lihat
+                    Semua</a>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
-                @foreach(\App\Models\Product::with('category')->take(8)->get() as $product)
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                @foreach(\App\Models\Product::with('category')->take(16)->get() as $product)
                     <x-product-card :product="$product" />
                 @endforeach
             </div>
         </div>
     </div>
 
-    <!-- Category Section -->
-    <div class="py-32 bg-white overflow-hidden">
+    <!-- Category Section (Shopee Style: Top & Compact) -->
+    <div class="py-8 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-4xl lg:text-6xl font-black text-neutral-dark tracking-tighter leading-tight mb-6">
-                    Telusuri Berdasarkan <span class="text-primary">Kategori.</span>
-                </h2>
-                <p class="text-slate-500 font-medium text-lg max-w-2xl mx-auto">
-                    Temukan apa yang Anda butuhkan melalui pengelompokan produk yang memudahkan navigasi.
-                </p>
+            <div class="mb-6 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-neutral-dark">Kategori Pilihan</h2>
+                <a href="{{ route('categories.index') }}" class="text-xs font-bold text-primary hover:underline">Lihat
+                    Semua</a>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-3 md:grid-cols-6 Gap-4">
                 @foreach(\App\Models\Category::take(6)->get() as $category)
-                    <a href="{{ route('categories.show', $category->id) }}" data-aos="zoom-in"
-                        class="group relative aspect-square rounded-[2rem] bg-slate-50 flex flex-col items-center justify-center p-6 transition-all duration-300 hover:bg-white border-2 border-transparent hover:border-primary hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                    <a href="{{ route('categories.show', $category->id) }}"
+                        class="group flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-slate-50 transition-all">
                         <div
-                            class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary/10 group-hover:scale-110 transition-all duration-300">
-                            <svg class="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors duration-300"
+                            class="w-12 h-12 md:w-16 md:h-16 bg-white border border-gray-100 rounded-full flex items-center justify-center shadow-sm group-hover:border-primary group-hover:shadow-md transition-all">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-slate-400 group-hover:text-primary transition-colors"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
                         </div>
                         <span
-                            class="text-sm font-black text-slate-500 group-hover:text-primary uppercase tracking-widest text-center transition-colors duration-300">{{ $category->name }}</span>
+                            class="text-xs font-medium text-center text-slate-600 group-hover:text-primary line-clamp-2">{{ $category->name }}</span>
                     </a>
                 @endforeach
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp CTA -->
-    <div class="py-32 bg-white relative overflow-hidden">
+    <!-- WhatsApp CTA (Compact) -->
+    <div class="py-10 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-                class="bg-gradient-to-br from-primary via-primary-dark to-neutral-dark rounded-[48px] p-12 lg:p-24 relative overflow-hidden shadow-2xl shadow-primary/30">
+                class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-8 relative overflow-hidden shadow-lg">
                 <!-- Glowing effect -->
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-innovation/30 rounded-full blur-[100px]"></div>
 
