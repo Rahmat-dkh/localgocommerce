@@ -3,7 +3,7 @@
 
     <!-- Image Carousel -->
     <div class="bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto pt-4 pb-2 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto pt-4 pb-2 px-4 sm:px-6 lg:px-8">
             <div x-data="{ 
                 active: 0, 
                 count: 3,
@@ -53,9 +53,40 @@
         </div>
     </div>
 
+
+
+
+
+    <!-- Kuliner Nusantara Section -->
+    <div class="py-12 bg-[#f0f9ff]/50">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Product Showcase (First Priority) -->
+            <div
+                class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-blue-100 relative overflow-hidden mb-12">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+
+                <div class="flex items-center justify-between mb-8 relative z-10">
+                    <h3 class="text-xl md:text-2xl font-black text-neutral-dark">Produk <span
+                            class="text-blue-500">Unggulan</span></h3>
+                    <a href="{{ route('products.index') }}"
+                        class="px-4 py-2 bg-blue-50 text-blue-600 font-bold rounded-xl text-xs hover:bg-blue-100 transition-colors">Lihat
+                        Semua</a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 relative z-10">
+                    @foreach(\App\Models\Product::take(5)->get() as $product)
+                        <x-product-card :product="$product" />
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Featured Section (Rekomendasi) -->
-    <div class="pt-0 pb-8 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 bg-slate-50">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-2">
                     <h2 class="text-xl font-bold text-neutral-dark">Rekomendasi</h2>
@@ -74,38 +105,95 @@
         </div>
     </div>
 
-    <!-- Category Section (Shopee Style: Top & Compact) -->
-    <div class="py-8 bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-6 flex items-center justify-between">
-                <h2 class="text-lg font-bold text-neutral-dark">Kategori Pilihan</h2>
-                <a href="{{ route('categories.index') }}" class="text-xs font-bold text-primary hover:underline">Lihat
-                    Semua</a>
+    <!-- Kuliner Nusantara Text & Features (Moved Below) -->
+    <div class="pb-16 pt-6 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full">
+                <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-orange-100/30 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Header (Title & Text) -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+
+                <h2 class="text-3xl md:text-5xl font-black text-neutral-dark mb-6 tracking-tight leading-tight">
+                    Jelajahi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Rasa
+                        Nusantara</span></h2>
+                <p class="text-slate-500 text-lg leading-relaxed">
+                    Oleh-oleh otentik dari seluruh penjuru Indonesia. Dikurasi khusus
+                    makanan yang <span class="font-bold text-neutral-dark">awet & tahan lama</span>, siap dikirim
+                    dengan
+                    aman ke depan pintu rumahmu.
+                </p>
             </div>
 
-            <div class="grid grid-cols-3 md:grid-cols-6 Gap-4">
-                @foreach(\App\Models\Category::take(6)->get() as $category)
-                    <a href="{{ route('categories.show', $category->id) }}"
-                        class="group flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-slate-50 transition-all">
-                        <div
-                            class="w-12 h-12 md:w-16 md:h-16 bg-white border border-gray-100 rounded-full flex items-center justify-center shadow-sm group-hover:border-primary group-hover:shadow-md transition-all">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-slate-400 group-hover:text-primary transition-colors"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M4 6h16M4 12h16m-7 6h7" />
-                            </svg>
-                        </div>
-                        <span
-                            class="text-xs font-medium text-center text-slate-600 group-hover:text-primary line-clamp-2">{{ $category->name }}</span>
-                    </a>
-                @endforeach
+            <!-- Features / Trust Badges -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-neutral-dark mb-2 group-hover:text-blue-600 transition-colors">
+                            Awet & Tahan Lama</h3>
+                        <p class="text-slate-500 leading-relaxed">Dipilih khusus untuk pengiriman jarak jauh tanpa
+                            mengurangi kualitas rasa saat sampai.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-neutral-dark mb-2 group-hover:text-blue-600 transition-colors">
+                            Kualitas Terjamin</h3>
+                        <p class="text-slate-500 leading-relaxed">Rasa otentik langsung dari daerah asalnya,
+                            melewati proses kurasi yang ketat.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-neutral-dark mb-2 group-hover:text-blue-600 transition-colors">
+                            Asli UMKM Daerah</h3>
+                        <p class="text-slate-500 leading-relaxed">Dukung ekonomi lokal di setiap gigitan, langsung
+                            memberdayakan pengusaha kecil.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- WhatsApp CTA (Compact) -->
     <div class="py-10 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
                 class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-8 relative overflow-hidden shadow-lg">
                 <!-- Glowing effect -->
@@ -127,7 +215,8 @@
                                         src="https://ui-avatars.com/api/?name=User+{{$i}}&background=random" alt="User">
                                 @endfor
                             </div>
-                            <span class="text-white font-bold text-sm">2,400+ Orang telah bertransaksi hari ini</span>
+                            <span class="text-white font-bold text-sm">2,400+ Orang telah bertransaksi hari
+                                ini</span>
                         </div>
                     </div>
                     <div data-aos="zoom-in" class="flex justify-center">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-28 lg:pt-40 pb-24 overflow-hidden relative">
+    <div class="pt-10 lg:pt-14 pb-24 overflow-hidden relative">
         <!-- Abstract Shapes -->
         <div
             class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
@@ -17,7 +17,7 @@
                     Misi Kami: <span class="text-primary italic">Globalisasi</span> UMKM.
                 </h1>
                 <p data-aos="fade-up" data-aos-delay="100"
-                    class="max-w-3xl mx-auto text-lg lg:text-xl text-slate-500 font-medium leading-relaxed">
+                    class="max-w-3xl mx-auto text-base text-slate-500 font-medium leading-relaxed">
                     LocalGo Commerce lahir dari semangat untuk memberdayakan potensi lokal Indonesia. Kami percaya bahwa
                     produk kreatif UMKM layak mendapatkan panggung internasional melalui teknologi startup yang
                     inklusif.
@@ -33,7 +33,7 @@
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-dark mb-4">Inovasi Digital</h3>
+                    <h3 class="text-lg font-bold text-neutral-dark mb-4">Inovasi Digital</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Menyediakan platform e-commerce tercanggih yang
                         mudah digunakan oleh seluruh pelaku UMKM.</p>
                 </div>
@@ -46,7 +46,7 @@
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-dark mb-4">Ekosistem Sinergi</h3>
+                    <h3 class="text-lg font-bold text-neutral-dark mb-4">Ekosistem Sinergi</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Membangun komunitas yang menghubungkan produsen
                         lokal langsung dengan konsumen global.</p>
                 </div>
@@ -59,7 +59,7 @@
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-dark mb-4">Aksesibilitas Global</h3>
+                    <h3 class="text-lg font-bold text-neutral-dark mb-4">Aksesibilitas Global</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Menghapus batasan geografis agar produk lokal
                         Indonesia dapat dinikmati di mana saja.</p>
                 </div>
@@ -70,9 +70,9 @@
                 <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[100px]"></div>
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div data-aos="fade-right">
-                        <h2 class="text-4xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-none">Visi
+                        <h2 class="text-3xl lg:text-4xl font-black text-white mb-6 tracking-tighter leading-none">Visi
                             Kami 2030</h2>
-                        <p class="text-white/70 text-lg lg:text-xl font-medium mb-12">
+                        <p class="text-white/70 text-base lg:text-lg font-medium mb-12">
                             Menjadi akselerator UMKM nomor satu di Indonesia yang membawa setidaknya 100.000 brand lokal
                             ke kancah internasional melalui ekosistem digital yang berkelanjutan.
                         </p>

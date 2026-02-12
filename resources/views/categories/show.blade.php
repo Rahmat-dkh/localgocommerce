@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-28 lg:pt-40 pb-24">
+    <div class="pt-10 lg:pt-14 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div

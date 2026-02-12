@@ -1,4 +1,4 @@
-<div class="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[60] flex flex-col items-end"
+<div class="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[1000] flex flex-col items-end"
     x-data="{ isOpen: false, msgInput: '' }" wire:ignore.self>
     <!-- Chat Window -->
     <div x-show="isOpen" x-transition:enter="transition ease-out duration-300"
@@ -71,7 +71,7 @@
 
     <!-- Toggle Button -->
     <button @click="isOpen = !isOpen"
-        class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-110 active:scale-95 transition-all group relative z-[100]">
+        class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-110 active:scale-95 transition-all group relative z-[1001]">
         <span x-show="!isOpen">
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
                 <path

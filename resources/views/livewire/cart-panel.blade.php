@@ -2,23 +2,30 @@
     @keydown.escape.window="isOpen = false" class="fixed inset-0 z-[1001] overflow-hidden">
     <div class="absolute inset-0 bg-neutral-dark/40 backdrop-blur-sm transition-opacity" @click="isOpen = false"></div>
 
-    <div class="fixed inset-y-0 right-0 max-w-full flex">
-        <div x-show="isOpen" x-transition:enter="transform transition ease-in-out duration-500"
-            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
-            x-transition:leave="transform transition ease-in-out duration-500" x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="translate-x-full" class="w-screen max-w-sm">
-            <div class="h-full flex flex-col glass border-l shadow-2xl">
+    <div class="fixed top-24 right-4 md:right-20 z-[1002] flex flex-col w-full max-w-[80vw] sm:max-w-[320px]"
+        style="pointer-events: auto;">
+        <div x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+            x-transition:leave-end="opacity-0 translate-y-4 scale-95" class="w-full">
+            <div class="flex flex-col glass border shadow-2xl rounded-3xl overflow-hidden max-h-[80vh]">
                 <!-- Header -->
-                <div class="p-4 sm:p-5 border-b border-neutral-dark/5 flex items-center justify-between">
-                    <h2 class="text-xl sm:text-2xl font-black text-neutral-dark tracking-tighter">Keranjang <span
-                            class="text-primary italic">Saya</span></h2>
-                    <button @click="isOpen = false"
-                        class="p-1.5 text-neutral-dark/40 hover:text-primary transition-colors">
-                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
+                <div class="p-4 border-b border-neutral-dark/5 bg-white/50">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-black text-neutral-dark tracking-tighter">Keranjang <span
+                                class="text-primary italic">Saya</span></h2>
+                        <button @click="isOpen = false"
+                            class="p-1 text-neutral-dark/40 hover:text-primary transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+
                 </div>
 
                 <!-- Items -->

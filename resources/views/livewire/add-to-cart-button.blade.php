@@ -1,7 +1,7 @@
 <div>
     @if($variant === 'text')
         <button wire:click="addToCart"
-            class="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 glass rounded-[1.5rem] font-black text-neutral-dark hover:bg-white transition-all flex items-center justify-center gap-3 text-base sm:text-lg shadow-lg relative overflow-hidden">
+            class="w-full h-12 lg:h-14 px-4 sm:px-6 glass rounded-[1.25rem] font-black text-neutral-dark hover:bg-white transition-all flex items-center justify-center gap-2 text-xs sm:text-base shadow-lg relative overflow-hidden">
             <!-- Loading State -->
             <div wire:loading wire:target="addToCart"
                 class="absolute inset-0 bg-white/80 flex items-center justify-center z-10">
@@ -14,17 +14,17 @@
             </div>
 
             @if($isAdded)
-                <svg class="w-6 h-6 animate-ping text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 animate-ping text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Terpasang</span>
+                <span class="text-xs sm:text-sm">Terpasang</span>
             @else
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                     </path>
                 </svg>
-                <span>Beli Sekarang</span>
+                <span class="text-xs sm:text-sm">+ Keranjang</span>
             @endif
         </button>
     @elseif($variant === 'mini')

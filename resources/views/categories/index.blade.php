@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-32 lg:pt-48 pb-24">
+    <div class="pt-10 lg:pt-14 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div data-aos="fade-right" class="mb-20 text-center lg:text-left">
@@ -36,7 +36,8 @@
                                 {{ $category->name }}
                             </h3>
                             <p class="text-white/60 font-bold text-xs uppercase tracking-widest">
-                                {{ $category->products_count ?? $category->products()->count() }} Produk</p>
+                                {{ $category->products_count ?? $category->products()->count() }} Produk
+                            </p>
                         </div>
 
                         <div

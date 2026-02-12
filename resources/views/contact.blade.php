@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Hero Section -->
-    <div class="relative pt-28 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-white">
+    <div class="relative pt-10 pb-12 lg:pt-14 lg:pb-16 overflow-hidden bg-white">
         <!-- Abstract Shapes -->
         <div
             class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
@@ -10,10 +10,10 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-            <h1 class="text-3xl lg:text-5xl font-black text-neutral-dark mb-8 tracking-tighter leading-tight">
+            <h1 class="text-3xl lg:text-5xl font-black text-neutral-dark mb-4 tracking-tighter leading-tight">
                 Hubungi <span class="text-primary">Kami.</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-lg text-slate-500 font-medium leading-relaxed">
+            <p class="max-w-2xl mx-auto text-sm text-slate-500 font-medium leading-relaxed">
                 Ada pertanyaan atau ingin bekerjasama? Kami siap membantu pertumbuhan UMKM Anda. Silakan hubungi kami
                 melalui formulir di bawah ini.
             </p>
@@ -26,12 +26,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                 <!-- Info Column -->
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl lg:text-4xl font-black text-neutral-dark mb-10 tracking-tight">Informasi Kontak
+                    <h2 class="text-lg font-black text-neutral-dark mb-6 tracking-tight">Informasi Kontak
                     </h2>
                     <div class="space-y-6 lg:space-y-8">
                         <!-- Email Card -->
                         <div
-                            class="bg-white p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 group hover:shadow-xl hover:shadow-primary/5 transition-all">
+                            class="bg-white p-4 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 group hover:shadow-xl hover:shadow-primary/5 transition-all">
                             <div
                                 class="w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
                                 <svg class="w-7 h-7 lg:w-8 lg:h-8" fill="none" stroke="currentColor"
@@ -41,16 +41,17 @@
                                 </svg>
                             </div>
                             <div class="min-w-0">
-                                <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Email Resmi
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Email
+                                    Resmi
                                 </p>
-                                <p class="text-base lg:text-lg font-bold text-slate-900 break-all">
+                                <p class="text-xs lg:text-sm font-bold text-slate-900 break-all">
                                     localgocommerce@gmail.com</p>
                             </div>
                         </div>
 
                         <!-- Phone Card -->
                         <div
-                            class="bg-white p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 group hover:shadow-xl hover:shadow-innovation/5 transition-all">
+                            class="bg-white p-4 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 group hover:shadow-xl hover:shadow-innovation/5 transition-all">
                             <div
                                 class="w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-innovation/10 flex items-center justify-center text-innovation group-hover:bg-innovation group-hover:text-white transition-all flex-shrink-0">
                                 <svg class="w-7 h-7 lg:w-8 lg:h-8" fill="none" stroke="currentColor"
@@ -60,16 +61,17 @@
                                 </svg>
                             </div>
                             <div class="min-w-0">
-                                <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">WhatsApp
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">
+                                    WhatsApp
                                     Resmi</p>
-                                <p class="text-base lg:text-lg font-bold text-slate-900 break-words">+62 857 1296 6082
+                                <p class="text-xs lg:text-sm font-bold text-slate-900 break-words">+62 857 1296 6082
                                 </p>
                             </div>
                         </div>
 
                         <!-- Address Card -->
                         <div
-                            class="bg-white p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 group hover:shadow-xl hover:shadow-growth/5 transition-all">
+                            class="bg-white p-4 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 group hover:shadow-xl hover:shadow-growth/5 transition-all">
                             <div
                                 class="w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-growth/10 flex items-center justify-center text-growth group-hover:bg-growth group-hover:text-white transition-all flex-shrink-0">
                                 <svg class="w-7 h-7 lg:w-8 lg:h-8" fill="none" stroke="currentColor"
@@ -81,9 +83,10 @@
                                 </svg>
                             </div>
                             <div class="min-w-0">
-                                <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Lokasi Kami
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Lokasi
+                                    Kami
                                 </p>
-                                <p class="text-base lg:text-lg font-bold text-slate-900 text-pretty">Purworejo, Jawa
+                                <p class="text-xs lg:text-sm font-bold text-slate-900 text-pretty">Purworejo, Jawa
                                     Tengah,
                                     Indonesia
                                 </p>
@@ -94,8 +97,8 @@
 
                 <!-- Form Column -->
                 <div data-aos="fade-left"
-                    class="bg-white p-10 lg:p-14 rounded-[3rem] shadow-2xl shadow-primary/5 border border-white">
-                    <h2 class="text-3xl font-black text-neutral-dark mb-10 tracking-tight">Kirim Pesan</h2>
+                    class="bg-white p-8 lg:p-10 rounded-[2.5rem] shadow-2xl shadow-primary/5 border border-white">
+                    <h2 class="text-lg font-black text-neutral-dark mb-6 tracking-tight">Kirim Pesan</h2>
 
                     @if(session('success'))
                         <div class="mb-6 p-4 bg-green-50 text-green-700 rounded-2xl font-bold border border-green-100">
@@ -107,32 +110,33 @@
                         @csrf
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Nama
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Nama
                                     Lengkap</label>
                                 <input type="text" name="name" placeholder="John Doe" required
-                                    class="w-full px-6 py-4 bg-slate-50 border-2 border-slate-50 rounded-2xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 placeholder:text-slate-300">
+                                    class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Alamat
+                                <label
+                                    class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Alamat
                                     Email</label>
                                 <input type="email" name="email" placeholder="john@example.com" required
-                                    class="w-full px-6 py-4 bg-slate-50 border-2 border-slate-50 rounded-2xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 placeholder:text-slate-300">
+                                    class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Subjek
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Subjek
                                 Pesan</label>
                             <input type="text" name="subject" placeholder="Kerjasama UMKM"
-                                class="w-full px-6 py-4 bg-slate-50 border-2 border-slate-50 rounded-2xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 placeholder:text-slate-300">
+                                class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-2">Pesan
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Pesan
                                 Anda</label>
-                            <textarea name="message" rows="5" placeholder="Tuliskan pesan Anda di sini..." required
-                                class="w-full px-6 py-4 bg-slate-50 border-2 border-slate-50 rounded-2xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 placeholder:text-slate-300"></textarea>
+                            <textarea name="message" rows="4" placeholder="Tuliskan pesan Anda di sini..." required
+                                class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300"></textarea>
                         </div>
                         <button type="submit"
-                            class="btn-primary w-full py-5 text-lg shadow-2xl shadow-primary/20 bg-primary text-white font-black rounded-2xl hover:bg-neutral-dark transition-all duration-500">
+                            class="btn-primary w-full py-3 text-sm shadow-2xl shadow-primary/20 bg-primary text-white font-black rounded-xl hover:bg-neutral-dark transition-all duration-500">
                             Kirim Sekarang
                         </button>
                     </form>

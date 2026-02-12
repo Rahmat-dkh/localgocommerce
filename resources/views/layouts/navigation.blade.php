@@ -1,7 +1,7 @@
 <!-- Top Bar: Socials & Language -->
     <div
         class="relative z-[60] bg-[#0c4a6e] text-white text-[10px] font-bold uppercase tracking-widest py-3 border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <!-- Left: Social Media Icons -->
             <div class="flex items-center gap-4">
                 <span class="text-white/50 hidden sm:inline">Ikuti Kami:</span>
@@ -51,8 +51,25 @@
     </div>
  
     <nav
-        class="sticky top-0 z-[999] bg-primary border-b border-white/5 shadow-xl shadow-primary/20 backdrop-blur-xl transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        x-data="{ 
+            showHeader: true, 
+            lastScroll: 0,
+            handleScroll() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll <= 60) {
+                    this.showHeader = true;
+                } else if (currentScroll > this.lastScroll) {
+                    this.showHeader = false;
+                } else {
+                    this.showHeader = true;
+                }
+                this.lastScroll = currentScroll;
+            }
+        }"
+        @scroll.window.throttle.10ms="handleScroll()"
+        class="sticky top-0 z-[999] bg-primary border-b border-white/5 shadow-xl shadow-primary/20 backdrop-blur-xl transition-all duration-500"
+        :class="showHeader ? 'translate-y-0' : '-translate-y-full'">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-14 md:h-14 gap-2 md:gap-8">
                 <!-- Group Left: Logo -->
                 <div class="flex-none flex items-center md:w-48">
@@ -143,12 +160,12 @@
                         </button>
 
                         <!-- Wishlist -->
-                        <div class="text-white hover:bg-white/10 rounded-full transition-colors flex items-center justify-center shrink-0 scale-90">
+                        <div class="relative group text-white shrink-0 scale-90">
                             <livewire:wishlist-icon />
                         </div>
 
                         <!-- Cart -->
-                        <div class="text-white hover:bg-white/10 rounded-full transition-colors flex items-center justify-center shrink-0 scale-90">
+                        <div class="relative group text-white shrink-0 scale-90">
                             <livewire:cart-counter />
                         </div>
 
@@ -201,7 +218,7 @@
                     <div x-show="openCategory" x-transition:enter="transition ease-out duration-200"
                         x-transition:enter-start="opacity-0 translate-y-1"
                         x-transition:enter-end="opacity-100 translate-y-0"
-                        class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50">
+                        class="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
                         <div class="max-h-80 overflow-y-auto py-2">
                             @php
                                 $categories = cache()->remember('navbar_categories', 3600, function () {
@@ -242,18 +259,12 @@
             </div>
 
             <!-- Right: Icons -->
-            <div class="flex-none w-48 flex items-center justify-end gap-3">
+            <div class="flex-none w-48 flex items-center justify-end gap-6">
                 <div class="relative group">
-                    <a href="#"
-                        class="text-white hover:text-cyan-300 transition-colors p-2 rounded-full hover:bg-white/10 transform active:scale-90 block">
-                        <livewire:wishlist-icon />
-                    </a>
+                    <livewire:wishlist-icon />
                 </div>
                 <div class="relative group">
-                    <a href="#"
-                        class="text-white hover:text-cyan-300 transition-colors p-2 rounded-full hover:bg-white/10 transform active:scale-90 block">
-                        <livewire:cart-counter />
-                    </a>
+                    <livewire:cart-counter />
                 </div>
             </div>
         </div>
