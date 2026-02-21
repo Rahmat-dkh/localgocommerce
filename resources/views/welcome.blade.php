@@ -2,7 +2,7 @@
     <!-- Hero Section Removed -->
 
     <!-- Modern 3-Panel Carousel -->
-    <div class="bg-white pt-8 pb-2 md:pt-6 md:pb-6 overflow-hidden">
+    <div class="bg-white pt-2 pb-2 md:pt-6 md:pb-6 overflow-hidden">
         <div x-data="{ 
             active: 1, 
             count: 3,

@@ -1,9 +1,7 @@
 <x-admin-layout>
-    <div class="mb-8 flex justify-between items-center">
-        <div>
-            <h1 class="text-3xl font-black text-neutral-dark tracking-tight">Messages</h1>
-            <p class="text-slate-500 font-medium">Read messages from your website visitors.</p>
-        </div>
+    <div class="mb-4 md:mb-8">
+        <h1 class="text-xl md:text-3xl font-black text-neutral-dark tracking-tight">Messages</h1>
+        <p class="text-[10px] md:text-sm text-slate-500 font-medium">Read messages from your website visitors.</p>
     </div>
 
     <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
@@ -12,38 +10,38 @@
                 <table class="w-full">
                     <thead class="bg-slate-50">
                         <tr>
-                            <th class="px-6 py-4 text-left text-xs font-black text-slate-400 uppercase tracking-wider">Date
+                            <th class="px-3 md:px-6 py-3 md:py-4 text-left text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest leading-tight">Date
                             </th>
-                            <th class="px-6 py-4 text-left text-xs font-black text-slate-400 uppercase tracking-wider">From
+                            <th class="px-3 md:px-6 py-3 md:py-4 text-left text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest leading-tight">From
                             </th>
-                            <th class="px-6 py-4 text-left text-xs font-black text-slate-400 uppercase tracking-wider">
+                            <th class="px-3 md:px-6 py-3 md:py-4 text-left text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest leading-tight">
                                 Subject</th>
-                            <th class="px-6 py-4 text-left text-xs font-black text-slate-400 uppercase tracking-wider">
+                            <th class="px-3 md:px-6 py-3 md:py-4 text-left text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest leading-tight">
                                 Message</th>
-                            <th class="px-6 py-4 text-left text-xs font-black text-slate-400 uppercase tracking-wider">
+                            <th class="px-3 md:px-6 py-3 md:py-4 text-left text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest leading-tight">
                                 Status</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         @foreach($contacts as $contact)
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 font-medium">
-                                    {{ $contact->created_at->format('d M Y H:i') }}
+                                <td class="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-[10px] md:text-sm text-slate-500 font-medium">
+                                    {{ $contact->created_at->format('d/m/y H:i') }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-bold text-slate-800">{{ $contact->name }}</div>
-                                    <div class="text-xs text-slate-500">{{ $contact->email }}</div>
+                                <td class="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
+                                    <div class="text-xs md:text-sm font-bold text-slate-800 leading-tight">{{ $contact->name }}</div>
+                                    <div class="text-[9px] md:text-xs text-slate-500">{{ $contact->email }}</div>
                                 </td>
-                                <td class="px-6 py-4 text-sm text-slate-700 font-medium">
-                                    {{ $contact->subject ?? 'No Subject' }}
+                                <td class="px-3 md:px-6 py-3 md:py-4 text-[10px] md:text-sm text-slate-700 font-medium leading-tight">
+                                    {{ $contact->subject ?? '-' }}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    {{ Str::limit($contact->message, 50) }}
+                                <td class="px-3 md:px-6 py-3 md:py-4 text-[10px] md:text-sm text-slate-600 leading-snug">
+                                    {{ Str::limit($contact->message, 30) }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
                                     @if($contact->is_read)
                                         <span
-                                            class="px-2 py-1 inline-flex text-xs leading-5 font-black rounded-full bg-slate-100 text-slate-500">
+                                            class="px-2 md:px-3 py-0.5 md:py-1 inline-flex text-[9px] md:text-[10px] leading-5 font-black rounded-full bg-slate-100 text-slate-500 uppercase tracking-widest">
                                             Read
                                         </span>
                                     @else
@@ -52,9 +50,9 @@
                                             @csrf
                                             @method('PATCH')
                                             <button type="submit"
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-black rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors"
+                                                class="px-2 md:px-3 py-0.5 md:py-1 inline-flex text-[9px] md:text-[10px] leading-5 font-black rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors uppercase tracking-widest"
                                                 title="Mark as Read">
-                                                New <span class="ml-1 text-[10px] opacity-70">(Mark Read)</span>
+                                                New
                                             </button>
                                         </form>
                                     @endif

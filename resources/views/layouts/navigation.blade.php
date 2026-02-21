@@ -1,7 +1,5 @@
-
-
 <nav
-        id="main-nav"
+    id="main-nav"
         x-data="{ 
             showHeader: true, 
             isScrolled: false,
@@ -39,13 +37,13 @@
         
         <!-- Top Bar: Socials & Language -->
         <div x-show="!isScrolled" 
+             class="hidden md:block bg-[#1a365d] text-white text-[11px] font-bold uppercase tracking-widest py-1 border-b border-white/5"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 -translate-y-4"
              x-transition:enter-end="opacity-100 translate-y-0"
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 translate-y-0"
-             x-transition:leave-end="opacity-0 -translate-y-4"
-             class="hidden md:block bg-[#0c4a6e] text-white text-[10px] font-bold uppercase tracking-widest py-[1px] border-b border-white/5">
+             x-transition:leave-end="opacity-0 -translate-y-4">
             <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <!-- Left: Social Media Icons -->
                 <div class="flex items-center gap-4">
@@ -98,12 +96,12 @@
             <div class="flex items-center justify-between gap-2 md:gap-8 transition-all duration-700 ease-in-out"
                 :class="isScrolled ? 'h-12 md:h-11' : 'h-14 md:h-14'">
                 <!-- Group Left: Logo -->
-                <div class="flex-none flex items-center md:w-48">
-                    <a href="/" class="flex items-center gap-1.5 md:gap-2">
+                <div class="flex-none flex items-center pr-2">
+                    <a href="/" class="flex items-center gap-1.5 p-1.5 hover:bg-white/10 rounded-xl transition-all active:scale-95 group">
                         <img src="{{ asset('images/logo_lokarasa.png') }}" alt="LocalGo"
                             class="w-auto object-contain rounded-lg transition-all duration-500"
-                            :class="isScrolled ? 'h-7 md:h-7' : 'h-9 md:h-9'">
-                        <span class="text-white font-black text-lg md:text-xl tracking-tighter hidden sm:block">
+                            :class="isScrolled ? 'h-7 md:h-7' : 'h-8 md:h-8'">
+                        <span class="text-white font-black text-sm md:text-xl tracking-tighter">
                             Local<span class="text-white/80">Go</span>
                         </span>
                     </a>
@@ -114,7 +112,7 @@
                     <div class="w-full max-w-xl">
                         <form action="{{ route('products.index') }}" method="GET" class="relative group w-full">
                             <div class="relative flex items-center">
-                                <input type="text" name="search" placeholder="Cari brand, produk, atau seller UMKM..."
+                                <input type="text" name="search" placeholder="Cari di LocalGo..."
                                     class="w-full bg-white border border-white/30 rounded-xl pl-6 pr-14 py-2 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all duration-300">
                                 <button type="submit"
                                     class="absolute right-1.5 top-1.5 bottom-1.5 bg-primary text-white hover:bg-neutral-dark rounded-lg px-4 mb-0 transition-all duration-300 flex items-center justify-center">
@@ -179,7 +177,7 @@
                     <div class="flex md:hidden items-center gap-0.5">
                         <!-- Search Toggle (Far Left of Group) -->
                         <button @click="openMobileSearch = !openMobileSearch" 
-                            class="text-white p-1 hover:bg-white/10 rounded-full transition-colors shrink-0">
+                            class="text-white w-9 h-9 flex items-center justify-center hover:bg-white/10 rounded-full transition-all active:scale-95 shrink-0">
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -198,7 +196,7 @@
  
                         <!-- Menu Hamburger -->
                         <button @click="open = ! open"
-                            class="p-1 text-white hover:text-cyan-400 transition-all duration-300 flex items-center justify-center rounded-full shrink-0">
+                            class="w-9 h-9 text-white hover:text-cyan-400 hover:bg-white/10 active:scale-95 transition-all duration-300 flex items-center justify-center rounded-full shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path :class="{'hidden': open, 'inline-flex': ! open }" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -211,15 +209,21 @@
             </div>
  
         <div x-show="openMobileSearch" 
-             class="md:hidden px-4 pb-4">
-            <form action="{{ route('products.index') }}" method="GET" class="relative">
-                <input type="text" name="search" placeholder="Cari di Rasapulang..."
-                    class="w-full bg-white border border-white/30 rounded-xl pl-5 pr-10 py-2 text-sm text-neutral-dark focus:ring-2 focus:ring-white/20">
-                <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-primary">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="md:hidden px-4 pb-3">
+            <form action="{{ route('products.index') }}" method="GET" class="relative group">
+                <div class="relative flex items-center">
+                    <input type="text" name="search" placeholder="Cari di LocalGo..."
+                        class="w-full bg-white border border-white/20 rounded-xl pl-5 pr-12 py-2 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all">
+                    <button type="submit" 
+                        class="absolute right-1 top-1 bottom-1 bg-primary text-white rounded-lg px-3 flex items-center justify-center active:scale-95 transition-all">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
             </form>
         </div>
  
@@ -373,28 +377,30 @@
                     <span class="w-full uppercase tracking-widest group-hover:translate-x-1 transition-transform inline-block">Kontak</span>
                 </a>
 
+                @auth
+                    <a href="{{ Auth::user()->isAdmin() ? route('admin.dashboard') : (Auth::user()->isSeller() ? route('vendor.dashboard') : route('dashboard')) }}"
+                        class="group flex items-center px-4 py-2 text-[12px] font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-300 border-b border-white/5">
+                        <span class="w-full uppercase tracking-widest group-hover:translate-x-1 transition-transform inline-block">Dashboard</span>
+                    </a>
+                @endauth
+
                 <!-- Vendor & Account Links -->
-                <div class="mt-4 pt-4 border-t border-white/10">
-                    <div class="px-4 py-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Menu Vendor
-                    </div>
-                    @auth
-                        @if (Auth::user()->vendor)
+                @auth
+                    @if (Auth::user()->vendor)
+                        <div class="mt-4 pt-4 border-t border-white/10">
+                            <div class="px-4 py-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Menu Vendor
+                            </div>
                             <a href="{{ route('vendor.dashboard') }}"
                                 class="group flex items-center px-4 py-2 text-[12px] font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-300 border-b border-white/5">
-                                <span class="uppercase tracking-widest">Dashboard Toko</span>
+                                <span class="uppercase tracking-widest group-hover:translate-x-1 transition-transform inline-block">Dashboard Toko</span>
                             </a>
                             <a href="{{ route('shop.show', Auth::user()->vendor->slug) }}"
                                 class="group flex items-center px-4 py-2 text-[12px] font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-300 border-b border-white/5">
-                                <span class="uppercase tracking-widest">Lihat Toko</span>
+                                <span class="uppercase tracking-widest group-hover:translate-x-1 transition-transform inline-block">Lihat Toko</span>
                             </a>
-                        @else
-                            <a href="{{ route('vendor.register') }}"
-                                class="group flex items-center px-4 py-2 text-[12px] font-bold text-innovation hover:text-white hover:bg-innovation transition-all duration-300 border-b border-white/5">
-                                <span class="uppercase tracking-widest">Jadi Seller</span>
-                            </a>
-                        @endif
-                    @endauth
-                </div>
+                        </div>
+                    @endif
+                @endauth
             </nav>
         </div>
 
