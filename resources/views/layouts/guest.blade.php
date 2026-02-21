@@ -36,14 +36,14 @@
 
     <!-- Back to Home Button -->
     <a href="/"
-        class="absolute top-6 left-6 z-10 p-3 bg-white/50 backdrop-blur-md border border-white/50 text-slate-500 rounded-xl hover:bg-white hover:text-primary shadow-sm hover:shadow-md transition-all group">
-        <svg class="w-6 h-6 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor"
-            viewBox="0 0 24 24">
+        class="absolute top-4 left-4 z-10 p-2 bg-white/50 backdrop-blur-md border border-white/50 text-slate-500 rounded-lg hover:bg-white hover:text-primary shadow-sm hover:shadow-md transition-all group">
+        <svg class="w-5 h-5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
         </svg>
     </a>
 
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-12 sm:pt-0">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
 
 
         <div
