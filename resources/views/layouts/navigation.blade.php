@@ -318,15 +318,15 @@
 
         <!-- Header inside Drawer -->
         <div
-            class="relative px-4 pt-5 pb-3 flex flex-col items-start justify-center border-b border-white/5 bg-[#111827]">
+            class="relative px-4 pt-8 pb-4 flex flex-col items-start justify-center border-b border-white/5 bg-[#111827]">
             <button @click="open = false"
-                class="absolute top-2.5 right-3 w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-all">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-all active:scale-95">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
             </button>
-            <span class="text-white font-bold text-[14px]">LOCAL GO</span>
+            <span class="text-white font-black text-[15px] tracking-tight mt-2">LOCAL GO</span>
             <span class="text-white/30 text-[9px] uppercase tracking-widest mt-0.5">Menu Utama</span>
         </div>
 
