@@ -16,3 +16,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Personal/Large Files
+/vite.config.zip
+.phpunit.result.cache

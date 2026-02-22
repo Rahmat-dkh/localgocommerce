@@ -7,7 +7,7 @@
             <div class="flex items-center gap-1.5 mt-1">
                 <div class="flex text-amber-400">
                     @for($i = 1; $i <= 5; $i++)
-                        <svg class="w-3 md:w-4 h-3 md:h-4 {{ $i <= round($product->averageRating()) ? 'fill-current' : 'text-neutral-dark/10' }}"
+                        <svg class="w-5 md:w-6 h-5 md:h-6 {{ $i <= round($product->averageRating()) ? 'fill-current' : 'text-neutral-dark/10' }}"
                             viewBox="0 0 20 20">
                             <path
                                 d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -15,7 +15,7 @@
                     @endfor
                 </div>
                 <span
-                    class="text-[10px] md:text-sm font-bold text-neutral-dark/60">{{ number_format($product->averageRating(), 1) }}
+                    class="text-xs md:text-sm font-bold text-neutral-dark/60">{{ number_format($product->averageRating(), 1) }}
                     /
                     5.0 ({{ $product->reviewCount() }})</span>
             </div>
@@ -90,19 +90,20 @@
                 <div class="flex items-start justify-between mb-2">
                     <div class="flex items-center gap-2">
                         <div
-                            class="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black uppercase shadow-sm text-[10px]">
+                            class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black uppercase shadow-sm text-sm">
                             {{ substr($review->user->name, 0, 1) }}
                         </div>
                         <div>
-                            <h4 class="font-black text-xs text-neutral-dark leading-none">{{ $review->user->name }}</h4>
+                            <h4 class="font-black text-sm text-neutral-dark leading-none mb-1">{{ $review->user->name }}
+                            </h4>
                             <span
-                                class="text-[8px] text-neutral-dark/40 font-bold uppercase tracking-widest">{{ $review->created_at->diffForHumans() }}</span>
+                                class="text-[10px] text-neutral-dark/40 font-bold uppercase tracking-widest">{{ $review->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
                         <div class="flex text-amber-400">
                             @for($i = 1; $i <= 5; $i++)
-                                <svg class="w-2.5 h-2.5 {{ $i <= $review->rating ? 'fill-current' : 'text-neutral-dark/10' }}"
+                                <svg class="w-3.5 h-3.5 {{ $i <= $review->rating ? 'fill-current' : 'text-neutral-dark/10' }}"
                                     viewBox="0 0 20 20">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -122,7 +123,7 @@
                         @endif
                     </div>
                 </div>
-                <p class="text-neutral-dark/70 text-[11px] font-medium leading-relaxed">
+                <p class="text-neutral-dark/70 text-[13px] md:text-sm font-medium leading-relaxed">
                     {{ $review->comment }}
                 </p>
             </div>

@@ -18,6 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{locale}', [App\Http\Controllers\LanguageController::class, 'switch'])->name('lang.switch');
 
+// Sitemap
+Route::get('/sitemap.xml', function () {
+    $products = \App\Models\Product::latest()->get();
+    $categories = \App\Models\Category::all();
+
+    return response()->view('sitemap', [
+        'products' => $products,
+        'categories' => $categories,
+    ])->header('Content-Type', 'text/xml');
+});
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');

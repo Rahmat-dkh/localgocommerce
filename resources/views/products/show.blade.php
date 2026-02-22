@@ -1,4 +1,46 @@
-<x-app-layout>
+@php
+    $title = $product->name . ' - ' . ($product->category->name ?? 'Produk');
+    $description = Str::limit(strip_tags($product->description), 160);
+    $keywords = $product->name . ', ' . ($product->category->name ?? '') . ', makanan lokal, UMKM, LocalGo';
+@endphp
+
+<x-app-layout :title="$title">
+    @section('meta_description', $description)
+    @section('meta_keywords', $keywords)
+
+    @push('scripts')
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": "{{ $product->name }}",
+                "image": [
+                    "{{ $product->image_url }}"
+                ],
+                "description": "{{ $description }}",
+                "sku": "{{ $product->id }}",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "LocalGo UMKM"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "url": "{{ url()->current() }}",
+                    "priceCurrency": "IDR",
+                    "price": "{{ $product->price }}",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                }
+                @if($product->averageRating() > 0)
+                    ,"aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "{{ $product->averageRating() }}",
+                        "reviewCount": "{{ $product->reviews_count ?? $product->reviews->count() }}"
+                    }
+                @endif
+            }
+            </script>
+    @endpush
     <div class="pt-1 pb-4 sm:pt-4 sm:pb-8 px-2 sm:px-6 lg:px-8">
         <div class="max-w-screen-2xl mx-auto">
             <div class="glass rounded-xl sm:rounded-[2rem] overflow-hidden p-3 lg:p-7 border-white/40">

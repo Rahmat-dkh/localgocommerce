@@ -8,8 +8,9 @@
 
     <title>{{ $title ?? config('app.name', 'LocalGo') }} - Marketplace Kuliner Nusantara</title>
     <meta name="description"
-        content="{{ $description ?? 'LocalGo - Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia. Nikmati kelezatan Nusantara langsung di rumah Anda.' }}">
-    <meta name="keywords" content="Kuliner Nusantara, makanan lokal, oleh-oleh Indonesia, jajanan pasar, LocalGo">
+        content="@yield('meta_description', $description ?? 'LocalGo - Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia. Nikmati kelezatan Nusantara langsung di rumah Anda.')">
+    <meta name="keywords"
+        content="@yield('meta_keywords', 'Kuliner Nusantara, makanan lokal, oleh-oleh Indonesia, jajanan pasar, LocalGo')">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo_lokarasa.png') }}">

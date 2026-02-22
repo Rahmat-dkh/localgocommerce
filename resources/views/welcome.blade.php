@@ -126,8 +126,32 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8 relative z-10">
-                    @foreach(\App\Models\Product::withAvg('reviews', 'rating')->take(5)->get() as $product)
-                        <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                    @php
+                        $featuredProducts = collect();
+
+                        // Priority: Tepung Tempe 2 Rasa
+                        $tepungTempe = \App\Models\Product::withAvg('reviews', 'rating')
+                            ->where('name', 'LIKE', '%Tepung Tempe 2 Rasa%')
+                            ->first();
+
+                        if ($tepungTempe) {
+                            $featuredProducts->push($tepungTempe);
+                        }
+
+                        // Fill remaining slots (excluding singkong and the one above)
+                        $others = \App\Models\Product::withAvg('reviews', 'rating')
+                            ->where('name', 'NOT LIKE', '%singkong%')
+                            ->when($tepungTempe, fn($q) => $q->where('id', '!=', $tepungTempe->id))
+                            ->latest()
+                            ->take(5 - $featuredProducts->count())
+                            ->get();
+
+                        $featuredProducts = $featuredProducts->concat($others);
+                    @endphp
+
+                    @foreach($featuredProducts as $product)
+                        <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}"
+                            class="{{ $loop->index === 4 ? 'hidden lg:block' : '' }}">
                             <x-product-card :product="$product" />
                         </div>
                     @endforeach
@@ -152,9 +176,10 @@
                     Semua</a>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                @foreach(\App\Models\Product::with('category')->withAvg('reviews', 'rating')->take(15)->get() as $product)
-                    <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 5) * 100 }}">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                @foreach(\App\Models\Product::with('category')->withAvg('reviews', 'rating')->take(24)->get() as $product)
+                    <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 6) * 100 }}"
+                        class="{{ $loop->index >= 12 ? 'hidden xl:block' : '' }}">
                         <x-product-card :product="$product" />
                     </div>
                 @endforeach
@@ -282,52 +307,56 @@
         </div>
     </div>
 
-    <!-- WhatsApp CTA (Compact) -->
-    <div class="py-10 bg-white relative overflow-hidden">
+    <!-- Support/CTA Section (Refined & Compact) -->
+    <div class="py-6 md:py-8 bg-white relative overflow-hidden">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-                class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-8 relative overflow-hidden shadow-lg">
+                class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-6 md:p-10 relative overflow-hidden shadow-lg">
                 <!-- Glowing effect -->
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-innovation/30 rounded-full blur-[100px]"></div>
 
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-center lg:text-left">
+                <div
+                    class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center text-center lg:text-left">
                     <div data-aos="fade-up">
-                        <h2 class="text-3xl lg:text-5xl font-black text-white mb-6 tracking-tighter leading-none">
-                            Hubungkan Langsung <br>Ke UMKM Favoritmu.
+                        <h2 class="text-2xl lg:text-4xl font-black text-white mb-4 tracking-tighter leading-tight">
+                            Pemberdayaan UMKM <br>Lokal Nusantara.
                         </h2>
-                        <p class="text-white/60 text-base lg:text-lg font-medium mb-8 max-w-lg">
-                            Dukungan penuh fitur checkout via WhatsApp untuk transaksi yang lebih personal dan aman
-                            langsung ke penjual.
+                        <p class="text-white/60 text-sm lg:text-base font-medium mb-6 max-w-lg">
+                            Setiap transaksi Anda di LocalGo membantu pengusaha lokal berkembang dan melestarikan
+                            warisan
+                            kuliner asli Indonesia. Kami hadir dengan sistem transaksi yang aman dan transparan.
                         </p>
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                            <div class="flex -space-x-3">
+                            <div class="flex -space-x-2">
                                 @for($i = 1; $i <= 4; $i++)
-                                    <img class="w-12 h-12 rounded-full border-4 border-primary-dark shadow-xl"
+                                    <img class="w-9 h-9 rounded-full border-2 border-primary-dark shadow-xl"
                                         src="https://ui-avatars.com/api/?name=User+{{$i}}&background=random" alt="User">
                                 @endfor
                             </div>
-                            <span class="text-white font-bold text-sm">2,400+ Orang telah bertransaksi hari
-                                ini</span>
+                            <span class="text-white font-bold text-xs opacity-80">Bergabung dengan ribuan pembeli
+                                lainnya</span>
                         </div>
                     </div>
                     <div data-aos="zoom-in" class="flex justify-center">
                         <div
-                            class="glass p-8 rounded-[40px] max-w-sm transform rotate-0 md:-rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl shadow-black/20">
+                            class="glass p-6 md:p-8 rounded-[30px] md:rounded-[40px] max-w-[320px] md:max-w-sm transform rotate-0 md:-rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl shadow-black/20">
                             <div
-                                class="w-16 h-16 bg-growth rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-growth/30">
-                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                                class="w-12 h-12 md:w-16 md:h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-lg shadow-blue-500/30">
+                                <svg class="w-7 h-7 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                             </div>
-                            <div class="space-y-4">
-                                <div class="w-full h-3 bg-neutral-dark/10 rounded-full"></div>
-                                <div class="w-5/6 h-3 bg-neutral-dark/10 rounded-full"></div>
-                                <div class="w-4/6 h-3 bg-neutral-dark/10 rounded-full"></div>
-                                <div class="pt-4">
-                                    <div
-                                        class="w-full h-12 bg-primary rounded-2xl flex items-center justify-center text-white font-black">
-                                        Pesan Otomatis</div>
+                            <div class="space-y-3 md:space-y-4 text-left">
+                                <h4 class="text-neutral-dark font-black text-lg md:text-xl">Transaksi Aman</h4>
+                                <p class="text-neutral-dark/60 text-xs md:text-sm font-medium">Sistem pembayaran
+                                    terintegrasi dan
+                                    layanan customer service yang siap membantu Anda 24/7.</p>
+                                <div class="pt-2 md:pt-4">
+                                    <button onclick="document.querySelector('[x-data]').__x.$data.isOpen = true"
+                                        class="w-full h-10 md:h-12 bg-primary rounded-xl md:rounded-2xl flex items-center justify-center text-white font-black hover:bg-primary-dark transition-colors text-sm md:text-base">
+                                        Chat Bantuan</button>
                                 </div>
                             </div>
                         </div>

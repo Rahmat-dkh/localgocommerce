@@ -37,7 +37,7 @@
 
             <!-- Products Grid -->
             <div
-                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-3 gap-y-6 sm:gap-x-6 sm:gap-y-8">
                 @foreach($products as $product)
                     <x-product-card :product="$product" />
                 @endforeach
