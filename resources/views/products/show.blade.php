@@ -10,36 +10,36 @@
 
     @push('scripts')
         <script type="application/ld+json">
-            {
-                "@context": "https://schema.org/",
-                "@type": "Product",
-                "name": "{{ $product->name }}",
-                "image": [
-                    "{{ $product->image_url }}"
-                ],
-                "description": "{{ $description }}",
-                "sku": "{{ $product->id }}",
-                "brand": {
-                    "@type": "Brand",
-                    "name": "LocalGo UMKM"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "url": "{{ url()->current() }}",
-                    "priceCurrency": "IDR",
-                    "price": "{{ $product->price }}",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
-                }
-                @if($product->averageRating() > 0)
-                    ,"aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "{{ $product->averageRating() }}",
-                        "reviewCount": "{{ $product->reviews_count ?? $product->reviews->count() }}"
-                    }
-                @endif
-            }
-            </script>
+                        {
+                            "@context": "https://schema.org/",
+                            "@type": "Product",
+                            "name": "{{ $product->name }}",
+                            "image": [
+                                "{{ $product->image_url }}"
+                            ],
+                            "description": "{{ $description }}",
+                            "sku": "{{ $product->id }}",
+                            "brand": {
+                                "@type": "Brand",
+                                "name": "LocalGo UMKM"
+                            },
+                            "offers": {
+                                "@type": "Offer",
+                                "url": "{{ url()->current() }}",
+                                "priceCurrency": "IDR",
+                                "price": "{{ $product->price }}",
+                                "availability": "https://schema.org/InStock",
+                                "itemCondition": "https://schema.org/NewCondition"
+                            }
+                            @if($product->averageRating() > 0)
+                                ,"aggregateRating": {
+                                    "@type": "AggregateRating",
+                                    "ratingValue": "{{ $product->averageRating() }}",
+                                    "reviewCount": "{{ $product->reviews_count ?? $product->reviews->count() }}"
+                                }
+                            @endif
+                        }
+                        </script>
     @endpush
     <div class="pt-1 pb-4 sm:pt-4 sm:pb-8 px-2 sm:px-6 lg:px-8">
         <div class="max-w-screen-2xl mx-auto">
@@ -70,7 +70,11 @@
                         </div>
 
                         <!-- Thumbnails -->
-                        @if($product->images->count() > 0)
+                        @php
+                            $extraImages = $product->images->where('image_path', '!=', $product->image);
+                        @endphp
+
+                        @if($extraImages->count() > 0)
                             <div class="grid grid-cols-4 gap-4">
                                 <!-- Main Image Thumbnail -->
                                 <div onclick="changeImage(document.getElementById('main-image').getAttribute('data-original-src'))"
@@ -79,15 +83,13 @@
                                 </div>
 
                                 <!-- Gallery Images -->
-                                @foreach($product->images as $img)
+                                @foreach($extraImages as $img)
                                     <div onclick="changeImage('{{ $img->image_url }}')"
                                         class="aspect-square bg-white rounded-2xl border-2 border-transparent hover:border-primary overflow-hidden cursor-pointer transition-all shadow-sm">
                                         <img src="{{ $img->image_url }}" class="w-full h-full object-cover">
                                     </div>
                                 @endforeach
                             </div>
-                        @else
-                            <!-- Placeholder if no gallery images (Optional: hide or show empty boxes) -->
                         @endif
                     </div>
 

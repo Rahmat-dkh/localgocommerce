@@ -67,7 +67,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        if ($product->vendor_id !== auth()->user()->vendor->id) {
+        if ($product->vendor_id != auth()->user()->vendor->id) {
             abort(403);
         }
         $categories = Category::all();
@@ -76,7 +76,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        if ($product->vendor_id !== auth()->user()->vendor->id) {
+        if ($product->vendor_id != auth()->user()->vendor->id) {
             abort(403);
         }
 
@@ -120,13 +120,18 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        if ($product->vendor_id !== auth()->user()->vendor->id) {
+        if ($product->vendor_id != auth()->user()->vendor->id) {
             abort(403);
         }
 
         if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($product->image);
         }
+
+        foreach ($product->images as $img) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($img->image_path);
+        }
+
         $product->delete();
 
         return redirect()->route('vendor.products.index')->with('success', 'Product deleted.');

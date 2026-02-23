@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="pt-20 sm:pt-24 pb-12 bg-slate-50 min-h-screen">
+    <div class="pt-10 sm:pt-24 pb-12 bg-slate-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-6 sm:mb-10">
                 <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight italic">Selesaikan <span
@@ -22,7 +22,7 @@
 
                         <!-- Address Selection -->
                         <div class="bg-white rounded-[1.5rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 p-5 sm:p-10"
-                            data-aos="fade-right">
+                            data-aos="fade-up">
                             <div
                                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
                                 <div class="flex items-center gap-3">
@@ -86,7 +86,7 @@
                         <!-- Order Groups -->
                         @foreach($orderGroups as $group)
                             <div class="bg-white rounded-[1.5rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden"
-                                data-aos="fade-right" data-aos-delay="{{ $loop->index * 150 }}">
+                                data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
                                 <div
                                     class="px-5 sm:px-8 py-4 sm:py-6 bg-slate-50/50 border-b border-slate-100 flex items-center justify-between">
                                     <div class="flex items-center gap-3">
@@ -200,7 +200,7 @@
                     <!-- Right Column: Summary -->
                     <div class="lg:col-span-1">
                         <div class="bg-neutral-dark rounded-[1.5rem] sm:rounded-[2.5rem] p-6 sm:p-10 text-white shadow-2xl shadow-neutral-dark/20 sticky top-24 overflow-hidden group"
-                            data-aos="fade-left" data-aos-delay="300">
+                            data-aos="fade-up" data-aos-delay="300">
                             <h3 class="text-lg sm:text-xl font-black italic tracking-tight mb-6 sm:mb-8">Ringkasan <span
                                     class="text-primary italic">Belanja</span></h3>
 

@@ -71,21 +71,8 @@
                                     <td class="px-5 py-3">
                                         <div class="flex items-center gap-3">
                                             <div class="h-9 w-9 flex-shrink-0 rounded-lg overflow-hidden border border-slate-100 bg-slate-50 relative group-hover:border-primary/20 transition-colors">
-                                                @php
-                                                    $imagePath = $product->image;
-                                                    $src = '';
-                                                    if ($imagePath) {
-                                                        if (str_starts_with($imagePath, 'http')) {
-                                                            $src = $imagePath;
-                                                        } elseif (str_starts_with($imagePath, 'products/')) {
-                                                            $src = asset('storage/' . $imagePath);
-                                                        } else {
-                                                            $src = asset('images/' . $imagePath);
-                                                        }
-                                                    }
-                                                @endphp
-                                                @if($src)
-                                                    <img class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ $src }}" alt="">
+                                                @if($product->image_url)
+                                                    <img class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ $product->image_url }}" alt="">
                                                 @else
                                                     <div class="h-full w-full flex items-center justify-center text-slate-300">
                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -108,7 +95,7 @@
                                         <div class="text-[8.5px] font-bold text-slate-400 mt-0.5">Stok: <span class="{{ $product->stock <= 5 ? 'text-amber-500 font-black' : '' }}">{{ $product->stock }}</span></div>
                                     </td>
                                     <td class="px-5 py-3">
-                                        <div class="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div class="flex items-center justify-end gap-1.5 transition-opacity">
                                             <a href="{{ route('vendor.products.edit', $product) }}"
                                                 class="w-7 h-7 flex items-center justify-center text-blue-500 bg-blue-50 hover:bg-blue-500 hover:text-white rounded-lg transition-all shadow-sm" title="Edit">
                                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
@@ -136,21 +123,8 @@
                         <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100 relative group">
                             <div class="flex gap-3 mb-3">
                                 <div class="h-14 w-14 flex-shrink-0 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
-                                    @php
-                                        $imagePath = $product->image;
-                                        $src = '';
-                                        if ($imagePath) {
-                                            if (str_starts_with($imagePath, 'http')) {
-                                                $src = $imagePath;
-                                            } elseif (str_starts_with($imagePath, 'products/')) {
-                                                $src = asset('storage/' . $imagePath);
-                                            } else {
-                                                $src = asset('images/' . $imagePath);
-                                            }
-                                        }
-                                    @endphp
-                                    @if($src)
-                                        <img class="h-full w-full object-cover" src="{{ $src }}" alt="">
+                                    @if($product->image_url)
+                                        <img class="h-full w-full object-cover" src="{{ $product->image_url }}" alt="">
                                     @else
                                         <div class="h-full w-full flex items-center justify-center text-slate-300">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>

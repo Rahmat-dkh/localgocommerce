@@ -26,8 +26,7 @@
         <div
             class="h-full w-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
             @if($product->image_url)
-                <img src="{{ Str::startsWith($product->image_url, 'http') ? $product->image_url : $product->image_url }}"
-                    alt="{{ $product->name }}" class="w-full h-full object-cover">
+                <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
             @else
                 <div class="text-primary/10">
                     <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,9 +66,9 @@
         <!-- Price & Action -->
         <div class="mt-auto pt-1 flex items-center justify-between gap-1">
             <div class="flex flex-col min-w-0">
-                <span class="text-base md:text-[17px] font-bold text-slate-900 tracking-tighter truncate">
+                <span class="text-base md:text-[17px] font-semibold text-slate-800 tracking-tight truncate">
                     <span
-                        class="text-[11px] md:text-sm font-bold text-primary mr-0.5">Rp</span>{{ number_format($product->price, 0, ',', '.') }}
+                        class="text-[11px] md:text-sm font-semibold text-primary mr-0.5">Rp</span>{{ number_format($product->price, 0, ',', '.') }}
                 </span>
             </div>
 

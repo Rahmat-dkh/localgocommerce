@@ -182,7 +182,8 @@
                                     <p class="text-sm font-black text-primary italic">
                                         {{ strtoupper($order->shipping_courier) }} <span
                                             class="text-white/40 font-bold not-italic font-sans">-
-                                            {{ strtoupper($order->shipping_service) }}</span></p>
+                                            {{ strtoupper($order->shipping_service) }}</span>
+                                    </p>
                                 </div>
 
                                 <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -190,7 +191,8 @@
                                     </p>
                                     <div class="flex items-center justify-between">
                                         <p class="text-sm font-black text-white tracking-widest">
-                                            {{ $order->tracking_number }}</p>
+                                            {{ $order->tracking_number }}
+                                        </p>
                                         <button onclick="navigator.clipboard.writeText('{{ $order->tracking_number }}')"
                                             class="p-1.5 hover:bg-white/10 rounded-lg transition-colors text-white/40 hover:text-white"
                                             title="Salin Resi">

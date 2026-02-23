@@ -85,25 +85,34 @@
     </div>
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between gap-2 md:gap-8 transition-all duration-700 ease-in-out"
-            :class="isScrolled ? 'h-12 md:h-11' : 'h-14 md:h-14'">
+            :class="isScrolled ? 'h-16 md:h-11' : 'h-16 md:h-14'">
             <!-- Drawer Toggle & Logo Mobile (Aligned Left) -->
             <div class="flex items-center gap-2.5 md:hidden">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                    <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-8 w-auto rounded-lg" alt="LocalGo Logo">
-                    <span class="text-white font-black text-base tracking-tight uppercase">Local<span
-                            class="text-white/80">Go</span></span>
+                    <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-9 w-auto rounded-lg" alt="LocalGo Logo">
+                    <div class="flex flex-col">
+                        <span class="text-base font-black tracking-tight text-white leading-none">
+                            LocalGo
+                        </span>
+                        <span
+                            class="text-[8px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
+                    </div>
                 </a>
             </div>
             <!-- Group Left: Logo (Desktop) -->
             <div class="flex-none flex items-center pr-2 hidden md:flex">
                 <a href="/"
-                    class="flex items-center gap-1.5 p-1.5 hover:bg-white/10 rounded-xl transition-all active:scale-95 group">
+                    class="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded-xl transition-all active:scale-95 group">
                     <img src="{{ asset('images/logo_lokarasa.png') }}" alt="LocalGo"
                         class="w-auto object-contain rounded-lg transition-all duration-500"
                         :class="isScrolled ? 'h-7 md:h-7' : 'h-8 md:h-8'">
-                    <span class="text-white font-black text-sm md:text-xl tracking-tighter">
-                        Local<span class="text-white/80">Go</span>
-                    </span>
+                    <div class="flex flex-col">
+                        <span class="text-white font-black text-sm md:text-xl tracking-tighter leading-none">
+                            Local<span class="text-white/80">Go</span>
+                        </span>
+                        <span
+                            class="text-[8px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
+                    </div>
                 </a>
             </div>
 
@@ -175,30 +184,30 @@
                 </div>
 
                 <!-- Mobile Icons Group (Always on Right) -->
-                <div class="flex md:hidden items-center gap-0.5">
+                <div class="flex md:hidden items-center gap-1">
                     <!-- Search Toggle (Far Left of Group) -->
                     <button @click="openMobileSearch = !openMobileSearch"
-                        class="text-white w-9 h-9 flex items-center justify-center hover:bg-white/10 rounded-full transition-all active:scale-95 shrink-0">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="text-white w-11 h-11 flex items-center justify-center hover:bg-white/10 rounded-full transition-all active:scale-95 shrink-0">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </button>
 
                     <!-- Wishlist -->
-                    <div class="relative group text-white shrink-0 scale-90">
+                    <div class="relative group text-white shrink-0 scale-110 px-1">
                         <livewire:wishlist-icon />
                     </div>
 
                     <!-- Cart -->
-                    <div class="relative group text-white shrink-0 scale-90">
+                    <div class="relative group text-white shrink-0 scale-110 px-1">
                         <livewire:cart-counter />
                     </div>
 
                     <!-- Menu Hamburger -->
                     <button @click="open = ! open"
-                        class="w-9 h-9 text-white hover:text-cyan-400 hover:bg-white/10 active:scale-95 transition-all duration-300 flex items-center justify-center rounded-full shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-11 h-11 text-white hover:text-cyan-400 hover:bg-white/10 active:scale-95 transition-all duration-300 flex items-center justify-center rounded-full shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path :class="{'hidden': open, 'inline-flex': ! open }" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path>
                             <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
@@ -302,59 +311,62 @@
 
 <!-- Mobile menu Drawer -->
 <div x-show="open" x-cloak class="fixed inset-0 z-[100000] md:hidden pointer-events-none">
-    <!-- Backdrop (Transparent as requested) -->
+    <!-- Backdrop (Blurred Backdrop for Premium Feel) -->
     <div x-show="open" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-400"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="open = false"
-        class="absolute inset-0 bg-transparent pointer-events-auto z-[99999]"></div>
+        class="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto z-[99999]"></div>
 
     <!-- Drawer Content -->
     <div x-show="open" x-transition:enter="transition ease-out duration-500 transform"
         x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
         x-transition:leave="transition ease-in duration-400 transform" x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full"
-        class="absolute right-0 top-0 bottom-0 w-48 bg-white h-screen flex flex-col shadow-2xl z-[100000] border-l border-slate-200 overflow-y-auto pointer-events-auto">
+        class="absolute right-0 top-0 bottom-0 w-[85%] bg-white h-screen flex flex-col shadow-2xl z-[100000] border-l border-slate-200 overflow-y-auto pointer-events-auto"
+        style="width: 85% !important; max-width: 85% !important;">
 
-        <!-- Header inside Drawer -->
-        <div class="px-5 pt-6 pb-4 border-b border-slate-200 bg-slate-50/50">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                    <img src="{{ asset('images/logo_lokarasa.png') }}" class="w-7 h-7 rounded-lg shadow-sm"
-                        alt="LocalGo">
-                    <span class="text-slate-950 font-black text-base tracking-tighter">Local<span
-                            class="text-primary">Go</span></span>
+        <!-- Header inside Drawer (Refined Left-Aligned Design) -->
+        <div class="px-5 pt-8 pb-5 border-b border-slate-200 bg-white relative">
+            <!-- Absolute Close Button -->
+            <button @click="open = false"
+                class="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-all active:scale-95 border border-slate-100">
+                <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Left-Aligned Logo & Branding -->
+            <div class="flex items-center gap-3">
+                <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-10 w-auto rounded-lg shadow-sm"
+                    alt="LocalGo">
+                <div class="flex flex-col">
+                    <span class="text-lg font-black tracking-tight text-slate-900 leading-none">
+                        Local<span class="text-primary">Go</span>
+                    </span>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-0.5">Commerce</span>
                 </div>
-                <button @click="open = false"
-                    class="w-8 h-8 rounded-lg bg-slate-200/50 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-all active:scale-95 border border-slate-200">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                            d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
             </div>
-            <span class="text-slate-400 text-[9px] uppercase font-bold tracking-[0.2em]">Menu Utama</span>
         </div>
 
         <!-- Links -->
         <div class="flex-grow bg-white px-0">
             <nav class="flex flex-col py-1">
                 <a href="{{ route('home') }}"
-                    class="group flex items-center px-5 py-3 text-[13px] font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300 border-b border-slate-200 {{ request()->routeIs('home') ? 'bg-slate-50 border-l-4 border-l-primary text-primary font-black' : 'border-l-4 border-l-transparent' }}">
-                    <span
-                        class="uppercase tracking-widest group-hover:translate-x-1 transition-transform">Beranda</span>
+                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('home') ? 'text-primary' : '' }}">
+                    <span class="uppercase tracking-widest transition-transform">Beranda</span>
                 </a>
                 <a href="{{ route('products.index') }}"
-                    class="group flex items-center px-5 py-3 text-[13px] font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300 border-b border-slate-200 {{ request()->routeIs('products.*') ? 'bg-slate-50 border-l-4 border-l-primary text-primary font-black' : 'border-l-4 border-l-transparent' }}">
-                    <span class="uppercase tracking-widest group-hover:translate-x-1 transition-transform">Produk</span>
+                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('products.*') ? 'text-primary' : '' }}">
+                    <span class="uppercase tracking-widest transition-transform">Produk</span>
                 </a>
                 <!-- Kategori Dropdown Mobile -->
-                <div x-data="{ openKategori: false }" class="border-b border-slate-200">
+                <div x-data="{ openKategori: false }" class="border-b border-slate-100 last:border-0">
                     <button @click="openKategori = !openKategori"
-                        class="w-full group flex items-center justify-between px-5 py-3 text-[13px] font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300"
+                        class="group w-full flex items-center justify-between px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300"
                         :class="openKategori ? 'bg-slate-50' : ''">
                         <span class="uppercase tracking-widest">Kategori</span>
-                        <svg class="w-3.5 h-3.5 transition-transform duration-300"
+                        <svg class="w-4 h-4 transition-transform duration-300"
                             :class="openKategori ? 'rotate-180 text-primary' : 'text-slate-400'" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7">
@@ -378,14 +390,19 @@
                     </div>
                 </div>
                 <a href="{{ route('about') }}"
-                    class="group flex items-center px-5 py-3 text-[13px] font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300 border-b border-slate-200 {{ request()->routeIs('about') ? 'bg-slate-50 border-l-4 border-l-primary text-primary font-black' : 'border-l-4 border-l-transparent' }}">
-                    <span
-                        class="uppercase tracking-widest group-hover:translate-x-1 transition-transform">Tentang</span>
+                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('about') ? 'text-primary' : '' }}">
+                    <span class="uppercase tracking-widest transition-transform">Tentang</span>
                 </a>
                 <a href="{{ route('contact') }}"
-                    class="group flex items-center px-5 py-3 text-[13px] font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300 border-b border-slate-200 {{ request()->routeIs('contact') ? 'bg-slate-50 border-l-4 border-l-primary text-primary font-black' : 'border-l-4 border-l-transparent' }}">
-                    <span class="uppercase tracking-widest group-hover:translate-x-1 transition-transform">Kontak</span>
+                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('contact') ? 'text-primary' : '' }}">
+                    <span class="uppercase tracking-widest transition-transform">Kontak</span>
                 </a>
+                <style>
+                    .py-5\.5 {
+                        padding-top: 22px;
+                        padding-bottom: 22px;
+                    }
+                </style>
 
                 <!-- User Section -->
                 @auth
@@ -399,7 +416,8 @@
                             <div class="overflow-hidden">
                                 <div
                                     class="text-xs font-bold text-slate-900 truncate group-hover/profile:text-primary transition-colors">
-                                    {{ Auth::user()->name }}</div>
+                                    {{ Auth::user()->name }}
+                                </div>
                                 <div class="text-[9px] text-slate-400 uppercase tracking-widest mt-0.5">Edit Profil</div>
                             </div>
                         </a>

@@ -1,4 +1,4 @@
-<div class="fixed bottom-6 right-6 md:bottom-10 md:right-8 z-[2000] flex flex-col items-end"
+<div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[2000] flex flex-col items-end"
     x-data="{ isOpen: false, msgInput: '' }" wire:ignore.self>
     <!-- Chat Window -->
     <div x-show="isOpen" x-transition:enter="transition ease-out duration-300"
@@ -85,15 +85,15 @@
 
     <!-- Toggle Button -->
     <button @click="isOpen = !isOpen"
-        class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all group relative z-[1001]">
+        class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all group relative z-[1001] border-4 border-white">
         <span x-show="!isOpen">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
                 <path
                     d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.002L2.5 21.5l4.498-.838A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.476 0-2.887-.313-4.166-.882l-2.732.509.509-2.732A7.955 7.955 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
             </svg>
         </span>
         <span x-show="isOpen" x-cloak>
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
             </svg>
         </span>

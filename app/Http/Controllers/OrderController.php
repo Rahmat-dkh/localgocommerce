@@ -106,8 +106,44 @@ class OrderController extends Controller
                         $shippingCost = collect($rates)->min('price');
                     }
                 }
+            } elseif ($vendorId === 'default' && $userAddress) {
+                // Official Store (Admin) Shipping Calculation
+                $adminVendor = \App\Models\Vendor::whereHas('user', function ($q) {
+                    $q->where('role', 'admin');
+                })->first();
+
+                if ($adminVendor && $adminVendor->postal_code && $userAddress->postal_code) {
+                    $vendor = $adminVendor; // Set for UI display if needed
+                    $biteship = new BiteshipService();
+                    $items = [];
+                    foreach ($vendorProducts as $prod) {
+                        $items[] = [
+                            'name' => $prod->name,
+                            'price' => $prod->price,
+                            'quantity' => $cart[$prod->id]['quantity'],
+                            'weight' => $prod->weight > 0 ? (int) $prod->weight : 1000
+                        ];
+                    }
+
+                    $couriers = $adminVendor->available_couriers ? implode(',', $adminVendor->available_couriers) : 'jne,sicepat,jnt,anteraja';
+
+                    $rates = $biteship->getShippingRates(
+                        ['postal_code' => $adminVendor->postal_code],
+                        ['postal_code' => $userAddress->postal_code],
+                        $items,
+                        $couriers
+                    );
+
+                    if (!empty($rates)) {
+                        $shippingCost = collect($rates)->min('price');
+                    }
+                } else {
+                    $shippingCost = 10000; // Final fallback
+                }
             } elseif ($vendor) {
                 $shippingCost = $vendor->flat_shipping_cost;
+            } else {
+                $shippingCost = 10000; // Default fallback for Admin product if no profile exists
             }
 
             $total = $subtotal + $serviceFee + $shippingCost;
@@ -169,6 +205,7 @@ class OrderController extends Controller
                 $vendor = $vendorProducts->first()->vendor;
                 $courierCode = 'jne';
                 $courierServiceCode = 'reg';
+                $shippingCost = 10000; // Initialize with default
 
                 if ($vendor && $address) {
                     $originPostalCode = $vendor->postal_code;
@@ -223,6 +260,50 @@ class OrderController extends Controller
                         }
                     } else {
                         $shippingCost = $vendor->flat_shipping_cost;
+                    }
+                } elseif ($vendorId === 'default' && $address) {
+                    // Official Store (Admin) Shipping Calculation
+                    $adminVendor = \App\Models\Vendor::whereHas('user', function ($q) {
+                        $q->where('role', 'admin');
+                    })->first();
+
+                    if ($adminVendor && $adminVendor->postal_code && $address->postal_code) {
+                        $biteship = new BiteshipService();
+                        $items = [];
+                        foreach ($vendorProducts as $prod) {
+                            $items[] = [
+                                'name' => $prod->name,
+                                'price' => $prod->price,
+                                'quantity' => $cart[$prod->id]['quantity'],
+                                'weight' => $prod->weight > 0 ? (int) $prod->weight : 1000
+                            ];
+                        }
+
+                        $couriers = $adminVendor->available_couriers ? implode(',', $adminVendor->available_couriers) : 'jne,sicepat,jnt,anteraja';
+
+                        $rates = $biteship->getShippingRates(
+                            ['postal_code' => $adminVendor->postal_code],
+                            ['postal_code' => $address->postal_code],
+                            $items,
+                            $couriers
+                        );
+
+                        if (!empty($rates)) {
+                            $selectedService = $request->input("shipping_service.default");
+                            if ($selectedService) {
+                                $parts = explode('|', $selectedService);
+                                if (count($parts) === 3) {
+                                    $courierCode = $parts[0];
+                                    $courierServiceCode = $parts[1];
+                                    $shippingCost = (int) $parts[2];
+                                }
+                            } else {
+                                $bestRate = collect($rates)->sortBy('price')->first();
+                                $courierCode = $bestRate['courier_code'];
+                                $courierServiceCode = $bestRate['courier_service_code'];
+                                $shippingCost = $bestRate['price'];
+                            }
+                        }
                     }
                 } elseif ($vendor) {
                     $shippingCost = $vendor->flat_shipping_cost;

@@ -82,6 +82,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('payouts', App\Http\Controllers\Admin\PayoutController::class)->only(['index', 'update']);
     Route::resource('contacts', App\Http\Controllers\ContactController::class)->only(['index', 'show', 'destroy']);
     Route::patch('/contacts/{id}/read', [App\Http\Controllers\ContactController::class, 'markAsRead'])->name('contacts.read');
+
+    Route::patch('/contacts/{id}/read', [App\Http\Controllers\ContactController::class, 'markAsRead'])->name('contacts.read');
 });
 
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
@@ -103,5 +105,65 @@ Route::middleware(['auth', 'vendor'])->prefix('vendor')->name('vendor.')->group(
 });
 
 Route::post('/payments/midtrans-notification', [App\Http\Controllers\MidtransNotificationController::class, 'handle']);
+
+// Temporary Fix for Storage Link (Visit: yourdomain.com/link-storage)
+Route::get('/link-storage', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        $msg = "Artisan storage:link executed. ";
+    } catch (\Exception $e) {
+        $msg = "Artisan storage:link failed: " . $e->getMessage() . ". ";
+    }
+
+    // Manual Symlink fallback for some hostings
+    $target = storage_path('app/public');
+    $shortcut = public_path('storage');
+
+    if (!file_exists($shortcut)) {
+        if (symlink($target, $shortcut)) {
+            $msg .= "Manual symlink created successfully!";
+        } else {
+            $msg .= "Manual symlink failed. Contact hosting support.";
+        }
+    } else {
+        $msg .= "Storage shortcut already exists.";
+    }
+
+    return $msg;
+});
+
+// Diagnostic route for images
+Route::get('/debug-images', function () {
+    $products = \App\Models\Product::take(10)->get();
+    $output = "<h1>Image Diagnostics</h1><table border='1'><tr><th>ID</th><th>Name</th><th>DB Path</th><th>Resolved URL</th></tr>";
+    foreach ($products as $p) {
+        $output .= "<tr><td>{$p->id}</td><td>{$p->name}</td><td>{$p->image}</td><td>{$p->image_url}</td></tr>";
+    }
+    $output .= "</table>";
+    return $output;
+});
+
+// Reset Products Route (Visit: yourdomain.com/reset-produk)
+Route::get('/reset-produk', function () {
+    try {
+        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        // 1. Delete physical files ONLY from 'products' storage folder
+        $files = \Illuminate\Support\Facades\Storage::disk('public')->allFiles('products');
+        \Illuminate\Support\Facades\Storage::disk('public')->delete($files);
+
+        // 2. Clear Database Tables
+        \App\Models\Review::truncate();      // Clear old reviews
+        \App\Models\OrderItem::truncate();   // Clear old order items to avoid errors
+        \App\Models\ProductImage::truncate();
+        \App\Models\Product::truncate();
+
+        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        return "Reset Berhasil! Produk, Gambar, dan Ulasan telah dikosongkan total.";
+    } catch (\Exception $e) {
+        return "Gagal Reset: " . $e->getMessage();
+    }
+});
 
 require __DIR__ . '/auth.php';

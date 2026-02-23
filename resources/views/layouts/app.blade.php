@@ -79,7 +79,7 @@
         @include('layouts.navigation')
 
         <!-- Page Content -->
-        <main>
+        <main class="pt-8 md:pt-0">
             {{ $slot }}
         </main>
 

@@ -64,10 +64,11 @@
                                     <p class="text-[10px] md:text-base text-white/70 font-medium mb-4 md:mb-8 max-w-md leading-tight md:leading-relaxed"
                                         x-text="slide.subtitle"></p>
                                     <a href="{{ route('products.index') }}"
-                                        class="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-2.5 bg-white text-primary font-black rounded-xl hover:bg-neutral-dark hover:text-white transition-all shadow-lg text-[10px] md:text-sm">
+                                        class="inline-flex items-center gap-2.5 px-5 py-2.5 md:px-8 md:py-3.5 bg-white text-primary font-black rounded-xl md:rounded-2xl hover:bg-neutral-dark hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 text-[10px] md:text-base group/btn">
                                         Mulai Belanja
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
                                     </a>
@@ -129,9 +130,8 @@
                     @php
                         $featuredProducts = collect();
 
-                        // Priority: Tepung Tempe 2 Rasa
                         $tepungTempe = \App\Models\Product::withAvg('reviews', 'rating')
-                            ->where('name', 'LIKE', '%Tepung Tempe 2 Rasa%')
+                            ->where('name', 'LIKE', '%Tepung Tempe%')
                             ->first();
 
                         if ($tepungTempe) {
