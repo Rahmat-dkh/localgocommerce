@@ -85,7 +85,7 @@
     </div>
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between gap-2 md:gap-8 transition-all duration-700 ease-in-out"
-            :class="isScrolled ? 'h-16 md:h-11' : 'h-16 md:h-14'">
+            :class="isScrolled ? 'h-16 md:h-11' : 'h-16 md:h-11'">
             <!-- Drawer Toggle & Logo Mobile (Aligned Left) -->
             <div class="flex items-center gap-2.5 md:hidden">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
@@ -117,16 +117,16 @@
             </div>
 
             <!-- Group Center: Centered Search Bar (Desktop Only) -->
-            <div class="hidden md:flex flex-grow justify-center px-4 pt-3">
+            <div class="hidden md:flex flex-grow justify-center px-4">
                 <div class="w-full max-w-xl">
                     <form action="{{ route('products.index') }}" method="GET" class="relative group w-full">
                         <div class="relative flex items-center">
                             <input type="text" name="search" placeholder="Cari di LocalGo..."
-                                class="w-full bg-white border border-white/30 rounded-xl pl-6 pr-14 py-2 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all duration-300">
+                                class="w-full bg-white border border-white/30 rounded-xl pl-6 pr-14 py-1.5 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all duration-300">
                             <button type="submit"
-                                class="absolute right-1.5 top-1.5 bottom-1.5 bg-primary text-white hover:bg-neutral-dark rounded-lg px-4 mb-0 transition-all duration-300 flex items-center justify-center">
+                                class="absolute right-1 top-1 bottom-1 bg-primary text-white hover:bg-neutral-dark rounded-lg px-3.5 mb-0 transition-all duration-300 flex items-center justify-center shadow-lg shadow-primary/20">
                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </button>
@@ -236,7 +236,7 @@
 
     <!-- Row 2: Navigation Links & Icons (Desktop) -->
     <div class="hidden md:flex items-center px-4 sm:px-6 lg:px-8 transition-all duration-700 ease-in-out border-t border-white/5"
-        :class="isScrolled ? 'h-9' : 'h-11'">
+        :class="isScrolled ? 'h-9' : 'h-9'">
         <!-- Left: Categories -->
         <div class="flex-none w-48">
             <!-- Categories -->
@@ -294,7 +294,7 @@
         </div>
 
         <!-- Right: Icons -->
-        <div class="flex-none w-48 flex items-center justify-end gap-6">
+        <div class="flex-none w-48 flex items-center justify-end gap-2 lg:gap-4 pr-4 lg:pr-8">
             <div class="relative group">
                 <livewire:wishlist-icon />
             </div>

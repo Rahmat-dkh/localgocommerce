@@ -10,36 +10,36 @@
 
     @push('scripts')
         <script type="application/ld+json">
-                                {
-                                    "@context": "https://schema.org/",
-                                    "@type": "Product",
-                                    "name": "{{ $product->name }}",
-                                    "image": [
-                                        "{{ $product->image_url }}"
-                                    ],
-                                    "description": "{{ $description }}",
-                                    "sku": "{{ $product->id }}",
-                                    "brand": {
-                                        "@type": "Brand",
-                                        "name": "LocalGo UMKM"
-                                    },
-                                    "offers": {
-                                        "@type": "Offer",
-                                        "url": "{{ url()->current() }}",
-                                        "priceCurrency": "IDR",
-                                        "price": "{{ $product->price }}",
-                                        "availability": "https://schema.org/InStock",
-                                        "itemCondition": "https://schema.org/NewCondition"
-                                    }
-                                    @if($product->averageRating() > 0)
-                                        ,"aggregateRating": {
-                                            "@type": "AggregateRating",
-                                            "ratingValue": "{{ $product->averageRating() }}",
-                                            "reviewCount": "{{ $product->reviews_count ?? $product->reviews->count() }}"
+                                    {
+                                        "@context": "https://schema.org/",
+                                        "@type": "Product",
+                                        "name": "{{ $product->name }}",
+                                        "image": [
+                                            "{{ $product->image_url }}"
+                                        ],
+                                        "description": "{{ $description }}",
+                                        "sku": "{{ $product->id }}",
+                                        "brand": {
+                                            "@type": "Brand",
+                                            "name": "LocalGo UMKM"
+                                        },
+                                        "offers": {
+                                            "@type": "Offer",
+                                            "url": "{{ url()->current() }}",
+                                            "priceCurrency": "IDR",
+                                            "price": "{{ $product->price }}",
+                                            "availability": "https://schema.org/InStock",
+                                            "itemCondition": "https://schema.org/NewCondition"
                                         }
-                                    @endif
-                                }
-                                </script>
+                                        @if($product->averageRating() > 0)
+                                            ,"aggregateRating": {
+                                                "@type": "AggregateRating",
+                                                "ratingValue": "{{ $product->averageRating() }}",
+                                                "reviewCount": "{{ $product->reviews_count ?? $product->reviews->count() }}"
+                                            }
+                                        @endif
+                                    }
+                                    </script>
     @endpush
     <div class="pt-1 pb-4 sm:pt-4 sm:pb-8 px-2 sm:px-6 lg:px-8">
         <div class="max-w-screen-2xl mx-auto">
@@ -245,7 +245,7 @@
                             Semua</a>
                     </div>
                     <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-8">
-                        @foreach(\App\Models\Product::with('category')->where('id', '!=', $product->id)->take(4)->get() as $p)
+                        @foreach(\App\Models\Product::with('category')->withAvg('reviews', 'rating')->withCount('reviews')->where('id', '!=', $product->id)->take(4)->get() as $p)
                             <x-product-card :product="$p" />
                         @endforeach
                     </div>

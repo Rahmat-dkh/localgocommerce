@@ -2,7 +2,7 @@
     <!-- Hero Section Removed -->
 
     <!-- Modern 3-Panel Carousel -->
-    <div class="bg-white pt-2 pb-2 md:pt-6 md:pb-6 overflow-hidden">
+    <div class="bg-white pt-2 pb-2 md:pt-2 md:pb-6 overflow-hidden">
         <div x-data="{ 
             active: 1, 
             count: 3,
@@ -168,6 +168,7 @@
                         $featuredProducts = collect();
 
                         $tepungTempe = \App\Models\Product::withAvg('reviews', 'rating')
+                            ->withCount('reviews')
                             ->where('name', 'LIKE', '%Tepung Tempe%')
                             ->first();
 
@@ -177,6 +178,7 @@
 
                         // Fill remaining slots (excluding singkong and the one above)
                         $others = \App\Models\Product::withAvg('reviews', 'rating')
+                            ->withCount('reviews')
                             ->where('name', 'NOT LIKE', '%singkong%')
                             ->when($tepungTempe, fn($q) => $q->where('id', '!=', $tepungTempe->id))
                             ->latest()
