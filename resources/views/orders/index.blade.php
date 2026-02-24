@@ -5,12 +5,12 @@
         </h2>
     </x-slot>
 
-    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-28">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Riwayat <span class="text-primary italic">Pesanan</span></h2>
-                    <p class="text-slate-500 text-[10px] sm:text-xs font-medium mt-1">Pantau status dan detail pembelanjaan Anda di sini.</p>
+                    <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tighter">Riwayat <span class="text-primary italic">Pesanan</span></h2>
+                    <p class="text-slate-500 text-[10px] sm:text-sm font-medium mt-1">Pantau status dan detail pembelanjaan Anda di sini.</p>
                 </div>
                 <a href="{{ route('products.index') }}" 
                     class="px-5 py-2.5 bg-white text-slate-600 font-black rounded-xl border border-slate-200 hover:bg-slate-50 transition-all shadow-sm text-[10px] uppercase tracking-widest">
@@ -55,12 +55,12 @@
                                         <div class="text-slate-800 font-black text-xs sm:text-sm">{{ $order->created_at->format('d M Y • H:i') }} WIB</div>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-4 sm:gap-6">
+                                <div class="flex items-center gap-4 sm:gap-10">
                                     <div class="text-right hidden sm:block">
-                                        <div class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total Bayar</div>
-                                        <div class="text-primary font-black text-base">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</div>
+                                        <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Total Bayar</div>
+                                        <div class="text-primary font-black text-xl italic leading-none">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</div>
                                     </div>
-                                    <div class="px-3 py-1 rounded-lg font-black text-[9px] uppercase tracking-widest
+                                    <div class="px-4 py-1.5 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm
                                         @if($order->status == 'completed') bg-emerald-100 text-emerald-600
                                         @elseif($order->status == 'processing') bg-blue-100 text-blue-600
                                         @elseif($order->status == 'cancelled') bg-rose-100 text-rose-600
@@ -115,21 +115,21 @@
                                                     @endif
                                                 </div>
                                                 <div class="min-w-0">
-                                                    <h4 class="text-xs font-black text-slate-800 leading-tight mb-0.5 truncate">{{ $item->product->name ?? 'Produk Tidak Tersedia' }}</h4>
-                                                    <p class="text-[8px] sm:text-[9px] font-bold text-slate-400 uppercase tracking-widest">{{ $item->quantity }} x Rp {{ number_format($item->price, 0, ',', '.') }}</p>
+                                                    <h4 class="text-xs sm:text-sm font-black text-slate-800 leading-tight mb-1 truncate">{{ $item->product->name ?? 'Produk Tidak Tersedia' }}</h4>
+                                                    <p class="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $item->quantity }} x Rp {{ number_format($item->price, 0, ',', '.') }}</p>
                                                 </div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-xs font-black text-slate-800 tracking-tight">Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</div>
+                                                <div class="text-xs sm:text-sm font-black text-slate-800 tracking-tight italic">Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</div>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
                                 
                                 <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                                    <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic flex items-center gap-1">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        Ref: {{ $order->payment_reference }}
+                                    <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic flex items-center gap-1 min-w-0">
+                                        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        <span class="truncate sm:whitespace-normal sm:break-all">Ref: {{ $order->payment_reference }}</span>
                                     </div>
                                     <div class="flex items-center justify-between w-full sm:w-auto gap-3">
                                         <div class="sm:hidden">
@@ -152,6 +152,10 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                
+                <div class="mt-8">
+                    {{ $orders->links() }}
                 </div>
             @endif
         </div>

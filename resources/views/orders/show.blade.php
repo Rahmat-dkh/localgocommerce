@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-28">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <!-- Header -->
             <div class="mb-8 flex justify-between items-end">
                 <div>
@@ -12,7 +12,7 @@
                         </svg>
                         Kembali ke Riwayat
                     </a>
-                    <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Detail <span
+                    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tighter">Detail <span
                             class="text-primary italic">Pesanan</span></h1>
                     <p class="text-slate-500 text-[10px] sm:text-xs font-medium mt-1 uppercase tracking-widest">Ref:
                         {{ $order->payment_reference }}
@@ -60,8 +60,9 @@
                                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                                 </svg>
                             </div>
-                            <h3 class="font-black text-slate-800 text-sm uppercase tracking-wider">Produk dari
-                                {{ $order->vendor->shop_name ?? 'UMKM' }}
+                            <h3 class="font-black text-slate-800 text-sm sm:text-base uppercase tracking-wider">Produk
+                                dari
+                                <span class="text-primary italic">{{ $order->vendor->shop_name ?? 'UMKM' }}</span>
                             </h3>
                         </div>
                         <div class="p-6 space-y-4">
@@ -142,20 +143,23 @@
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
                             </div>
-                            <h3 class="font-black text-slate-800 text-sm uppercase tracking-wider">Alamat Pengiriman
+                            <h3 class="font-black text-slate-800 text-sm sm:text-base uppercase tracking-wider">Alamat
+                                Pengiriman
                             </h3>
                         </div>
                         <div class="p-6">
-                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                                <p
-                                    class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 inline-block px-2 py-0.5 bg-white rounded-md shadow-sm border border-slate-100">
-                                    Penerima: {{ $order->user->name }}</p>
-                                <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed mb-3">
+                            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span
+                                        class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Penerima:</span>
+                                    <span class="text-xs font-black text-slate-900">{{ $order->user->name }}</span>
+                                </div>
+                                <p class="text-sm sm:text-base font-bold text-slate-700 leading-relaxed mb-4">
                                     {{ $order->shipping_address }}
                                 </p>
                                 <div
-                                    class="flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-widest">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    class="flex items-center gap-2 text-primary font-black text-[10px] sm:text-xs uppercase tracking-widest">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
                                         </path>
@@ -186,11 +190,12 @@
                                     </p>
                                 </div>
 
-                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                    <p class="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Nomor Resi
+                                <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                                    <p class="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1.5">Nomor
+                                        Resi
                                     </p>
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-sm font-black text-white tracking-widest">
+                                    <div class="flex items-center justify-between gap-2">
+                                        <p class="text-sm sm:text-lg font-black text-white tracking-tight break-all">
                                             {{ $order->tracking_number }}
                                         </p>
                                         <button onclick="navigator.clipboard.writeText('{{ $order->tracking_number }}')"

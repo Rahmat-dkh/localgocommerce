@@ -57,7 +57,7 @@
                                 class="text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest">Total
                                 Pendapatan</span>
                             <span class="text-xl sm:text-2xl font-black text-primary italic">Rp
-                                {{ number_format($order->total_amount - $order->service_fee, 0, ',', '.') }}</span>
+                                {{ number_format($order->items->sum(fn($item) => $item->price * $item->quantity), 0, ',', '.') }}</span>
                         </div>
                     </div>
 
@@ -111,10 +111,10 @@
                                 <h4 class="text-sm sm:text-base font-black text-slate-800">{{ $order->user->name }}</h4>
                                 <div class="flex items-center gap-2">
                                     <p class="text-[10px] sm:text-[11px] font-black text-primary/70 tracking-tight">
-                                        {{ $order->phone ?: ($order->user->phone ?: ($order->user->addresses()->latest()->first()->phone ?? '-')) }}
+                                        {{ $order->phone ?: ($order->user->phone ?: ($order->user->addresses()->latest()->first()?->phone ?? '-')) }}
                                     </p>
                                     @if($order->phone || $order->user->phone)
-                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $order->phone ?: ($order->user->phone ?: ($order->user->addresses()->latest()->first()->phone ?? ''))) }}"
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $order->phone ?: ($order->user->phone ?: ($order->user->addresses()->latest()->first()?->phone ?? ''))) }}"
                                             target="_blank"
                                             class="p-1 bg-emerald-50 text-emerald-500 rounded-lg hover:bg-emerald-100 transition-colors"
                                             title="Hubungi via WhatsApp">
@@ -149,7 +149,8 @@
                                     <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Nomor
                                         Resi ({{ strtoupper($order->shipping_courier) }})</p>
                                     <p class="text-xs sm:text-sm font-black text-slate-900 font-mono">
-                                        {{ $order->tracking_number }}</p>
+                                        {{ $order->tracking_number }}
+                                    </p>
                                 </div>
                                 @if($order->shipping_label)
                                     <a href="{{ $order->shipping_label }}" target="_blank"

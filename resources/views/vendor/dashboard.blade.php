@@ -198,10 +198,10 @@
                                                                                 @endif
                                                                             </div>
                                                                         </td>
-                                                                        <td class="px-6 py-4 whitespace-nowrap">
-                                                                            <span class="text-xs font-black text-primary italic">Rp
-                                                                                {{ number_format($order->total_amount - $order->service_fee, 0, ',', '.') }}</span>
-                                                                        </td>
+                                                                         <td class="px-6 py-4 whitespace-nowrap">
+                                                                             <span class="text-xs font-black text-primary italic">Rp
+                                                                                 {{ number_format($order->items->sum(fn($item) => $item->price * $item->quantity), 0, ',', '.') }}</span>
+                                                                         </td>
                                                                         <td class="px-6 py-4 whitespace-nowrap text-center">
                                                                             <span
                                                                                 class="px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest
@@ -260,9 +260,8 @@
                                                                 <div
                                                                     class="text-[8px] font-bold text-slate-400 uppercase tracking-tight italic">
                                                                     {{ $order->created_at->format('d M, H:i') }}</div>
-                                                                <div class="text-xs font-black text-primary italic mt-0.5">Rp
-                                                                    {{ number_format($order->total_amount - $order->service_fee, 0, ',', '.') }}
-                                                                </div>
+                                                                 <div class="text-xs font-black text-primary italic leading-none">Rp
+                                                                     {{ number_format($order->items->sum(fn($item) => $item->price * $item->quantity), 0, ',', '.') }}</div>
                                                             </div>
                                                         </div>
 

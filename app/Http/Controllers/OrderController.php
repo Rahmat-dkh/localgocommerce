@@ -191,7 +191,15 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             foreach ($grouped as $vendorId => $vendorProducts) {
-                $realVendorId = ($vendorId === 'default') ? null : $vendorId;
+                $adminVendor = null;
+                if ($vendorId === 'default') {
+                    $adminVendor = \App\Models\Vendor::whereHas('user', function ($q) {
+                        $q->where('role', 'admin');
+                    })->first();
+                    $realVendorId = $adminVendor ? $adminVendor->id : null;
+                } else {
+                    $realVendorId = $vendorId;
+                }
 
                 $subtotal = 0;
                 foreach ($vendorProducts as $p) {
@@ -261,12 +269,6 @@ class OrderController extends Controller
                     } else {
                         $shippingCost = $vendor->flat_shipping_cost;
                     }
-                } elseif ($vendorId === 'default' && $address) {
-                    // Official Store (Admin) Shipping Calculation
-                    $adminVendor = \App\Models\Vendor::whereHas('user', function ($q) {
-                        $q->where('role', 'admin');
-                    })->first();
-
                     if ($adminVendor && $adminVendor->postal_code && $address->postal_code) {
                         $biteship = new BiteshipService();
                         $items = [];
@@ -362,6 +364,11 @@ class OrderController extends Controller
                     'email' => auth()->user()->email,
                     'phone' => $address->phone,
                 ],
+                'callbacks' => [
+                    'finish' => route('checkout.finish'),
+                    'unfinish' => route('checkout.finish'),
+                    'error' => route('checkout.finish'),
+                ],
             ];
 
             try {
@@ -401,7 +408,9 @@ class OrderController extends Controller
             $orders = Order::where('payment_reference', $orderId)->get();
 
             if ($orders->isNotEmpty()) {
-                if ($status['transaction_status'] == 'settlement' || $status['transaction_status'] == 'capture') {
+                // Safely access status whether it is an object or array
+                $txStatus = data_get($status, 'transaction_status');
+                if ($txStatus == 'settlement' || $txStatus == 'capture') {
                     $this->processPaymentSuccess($orders, 'Midtrans Verification (Finish Redirect)');
                     return redirect()->route('orders.index')->with('success', 'Pembayaran berhasil dikonfirmasi! Pesanan Anda sedang diproses.');
                 }
@@ -415,14 +424,14 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = auth()->user()->orders()->with(['items.product', 'vendor'])->orderBy('created_at', 'desc')->get();
+        $orders = auth()->user()->orders()->with(['items.product', 'vendor'])->orderBy('created_at', 'desc')->paginate(10);
         return view('orders.index', compact('orders'));
     }
 
     public function show(Order $order)
     {
-        // Security check: only the owner can view
-        if ($order->user_id !== auth()->id()) {
+        // Security check: only the owner or admin can view
+        if ($order->user_id != auth()->id() && !auth()->user()->isAdmin()) {
             abort(403);
         }
 
