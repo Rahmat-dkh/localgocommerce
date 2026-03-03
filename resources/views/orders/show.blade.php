@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-28">
+    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-4 sm:pt-28">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <!-- Header -->
             <div class="mb-8 flex justify-between items-end">
@@ -26,7 +26,7 @@
                         @else bg-amber-500 text-white @endif">
                         @php
                             $statusTranslations = [
-                                'pending' => 'Menunggu Pembayaran',
+                                'pending' => 'Menunggu Diproses',
                                 'processing' => 'Sedang Diproses',
                                 'shipped' => 'Dalam Pengiriman',
                                 'delivered' => 'Selesai / Diterima',

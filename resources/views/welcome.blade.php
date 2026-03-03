@@ -2,7 +2,7 @@
     <!-- Hero Section Removed -->
 
     <!-- Modern 3-Panel Carousel -->
-    <div class="bg-white pt-2 pb-2 md:pt-2 md:pb-6 overflow-hidden">
+    <div class="bg-white pt-3 pb-2 md:pt-10 md:pb-6 overflow-hidden">
         <div x-data="{ 
             active: 1, 
             count: 3,
@@ -37,7 +37,7 @@
         }" class="relative w-full">
 
             <!-- Slides Container -->
-            <div class="relative flex items-center justify-center h-[180px] md:h-[280px]">
+            <div class="relative flex items-center justify-center h-[200px] md:h-[280px]">
                 <template x-for="(slide, index) in slides" :key="index">
                     <div class="absolute transition-all duration-700 ease-in-out cursor-pointer" :class="{
                             'z-30 w-[80%] md:w-[60%] opacity-100 scale-100': active === index,
@@ -46,7 +46,7 @@
                             'z-10 opacity-0': active !== index && (active - 1 + count) % count !== index && (active + 1) % count !== index
                         }" @click="active = index">
                         <div
-                            class="relative h-[180px] md:h-[280px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl">
+                            class="relative h-[200px] md:h-[280px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl">
                             <img :src="slide.img" class="w-full h-full object-cover" :alt="slide.title">
 
                             <!-- Content Overlay -->
@@ -60,12 +60,12 @@
                                     <span
                                         class="inline-block px-3 py-1 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-widest bg-white/20 backdrop-blur-md mb-2 md:mb-4 border border-white/10"
                                         x-text="slide.tag"></span>
-                                    <h2 class="text-xl md:text-5xl font-black tracking-tighter leading-none mb-2 md:mb-4"
+                                    <h2 class="text-[19px] md:text-5xl font-black tracking-tighter leading-none mb-2 md:mb-4"
                                         x-text="slide.title"></h2>
-                                    <p class="text-[10px] md:text-base text-white/95 font-medium mb-4 md:mb-8 max-w-md leading-tight md:leading-relaxed"
+                                    <p class="text-[14px] md:text-base text-white/95 font-medium mb-4 md:mb-8 max-w-md leading-tight md:leading-relaxed"
                                         x-text="slide.subtitle"></p>
                                     <a href="{{ route('products.index') }}"
-                                        class="inline-flex items-center gap-2.5 px-5 py-2.5 md:px-8 md:py-3.5 bg-white text-primary font-black rounded-xl md:rounded-2xl hover:bg-neutral-dark hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 text-[10px] md:text-base group/btn">
+                                        class="inline-flex items-center gap-2.5 px-5 py-2.5 md:px-8 md:py-3.5 bg-white text-primary font-black rounded-xl md:rounded-2xl hover:bg-neutral-dark hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 text-[15px] md:text-base group/btn">
                                         Mulai Belanja
                                         <svg class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,38 +108,22 @@
     </div>
 
 
-    <!-- Mobile Categories Section (Below Hero) -->
-    <div class="block md:hidden bg-white border-b border-slate-100">
-        <div class="px-4 py-4" x-data="{ openMobCat: false }">
-            <button @click="openMobCat = !openMobCat"
-                class="w-full flex items-center justify-between px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl group active:scale-[0.98] transition-all duration-300">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </div>
-                    <span class="text-sm font-black text-slate-800 uppercase tracking-widest">Pilih Kategori</span>
-                </div>
-                <svg class="w-4 h-4 text-slate-400 transition-transform duration-300"
-                    :class="openMobCat ? 'rotate-180 text-primary' : ''" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-
-            <div x-show="openMobCat" x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="mt-3 grid grid-cols-2 gap-2 pb-2">
+    <!-- Mobile Categories Section (Horizontal Bubbles) -->
+    <div class="block md:hidden bg-white overflow-hidden">
+        <div class="px-4 py-4">
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar -mx-4 px-4">
                 @php
                     $categories = \App\Models\Category::all();
                 @endphp
+                <a href="{{ route('products.index') }}"
+                    class="flex-shrink-0 flex items-center gap-2 px-4 py-1.5 bg-primary/5 border border-primary/20 rounded-full active:scale-95 transition-all">
+                    <span class="text-[15px] font-bold text-primary normal-case">Semua</span>
+                </a>
+
                 @foreach($categories as $category)
                     <a href="{{ route('categories.show', $category->slug) }}"
-                        class="flex items-center gap-2 px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl hover:border-primary/30 transition-all text-left">
-                        <span
-                            class="text-[10px] font-bold text-slate-600 uppercase tracking-wider line-clamp-1">{{ $category->name }}</span>
+                        class="flex-shrink-0 flex items-center gap-2 px-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full active:scale-95 transition-all">
+                        <span class="text-[15px] font-bold text-slate-800 normal-case">{{ $category->name }}</span>
                     </a>
                 @endforeach
             </div>
@@ -147,7 +131,7 @@
     </div>
 
     <div class="py-2 md:py-6 bg-slate-50">
-        <div class="max-w-screen-2xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Product Showcase (First Priority) -->
             <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-blue-100 relative overflow-hidden">
                 <div
@@ -202,7 +186,7 @@
 
     <!-- Featured Section (Rekomendasi) -->
     <div class="py-2 md:py-6 bg-slate-50">
-        <div class="max-w-screen-2xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-2">
                     <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-none">Pilihan
@@ -240,15 +224,14 @@
         <div class="text-center max-w-7xl mx-auto mb-6 md:mb-12" data-aos="fade-up">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-xl md:text-5xl font-black text-slate-900 mb-3 md:mb-6 tracking-tighter leading-tight">
-                    Jelajahi <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-500">Rasa
+                    Produk <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-500">UMKM
                         Nusantara</span>
                 </h2>
                 <p class="text-slate-500 text-xs md:text-lg leading-relaxed font-medium mb-6 md:mb-10 px-4">
-                    Oleh-oleh otentik dari seluruh penjuru Indonesia. Dikurasi khusus
-                    makanan yang <span class="text-slate-900 font-black border-b-2 border-primary/20">awet & tahan
-                        lama</span>,
-                    siap dikirim dengan aman ke depan pintu rumahmu.
+                    Cita rasa otentik dari pelosok negeri. Produk pilihan yang <span
+                        class="text-slate-900 font-black border-b-2 border-primary/20">awet & tahan
+                        lama</span>, siap dikirim aman langsung ke rumahmu.
                 </p>
             </div>
 

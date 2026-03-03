@@ -73,7 +73,7 @@
         </button>
     @else
         <button wire:click="addToCart"
-            class="w-8 h-8 sm:w-11 sm:h-11 bg-primary text-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-primary/20 hover:bg-primary-dark hover:scale-110 active:scale-95 group/btn relative overflow-hidden">
+            class="w-10 h-10 sm:w-11 sm:h-11 bg-primary text-white rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-primary/20 hover:bg-primary-dark hover:scale-110 active:scale-95 group/btn relative overflow-hidden">
             <!-- Loading State -->
             <div wire:loading wire:target="addToCart"
                 class="absolute inset-0 bg-primary flex items-center justify-center z-10">

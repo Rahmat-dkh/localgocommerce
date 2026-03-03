@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-20 sm:pt-28">
+    <div class="py-6 sm:py-10 bg-slate-50 min-h-screen pt-4 sm:pt-28">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8">
                 <div>
@@ -67,7 +67,7 @@
                                         @else bg-amber-100 text-amber-600 @endif">
                                         @php
                                             $statusTranslations = [
-                                                'pending' => 'Menunggu Pembayaran',
+                                                'pending' => 'Menunggu Diproses',
                                                 'processing' => 'Sedang Diproses',
                                                 'shipped' => 'Dalam Pengiriman',
                                                 'delivered' => 'Selesai / Diterima',

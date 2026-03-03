@@ -85,7 +85,7 @@
 
     <!-- Toggle Button -->
     <button @click="isOpen = !isOpen"
-        class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all group relative z-[1001] border-4 border-white">
+        class="w-12 h-12 md:w-14 md:h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all group relative z-[1001]">
         <span x-show="!isOpen">
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
                 <path

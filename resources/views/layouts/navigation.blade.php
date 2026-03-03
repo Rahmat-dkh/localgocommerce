@@ -39,7 +39,7 @@
             <!-- Left: Social Media Icons -->
             <div class="flex items-center gap-4">
                 <span class="text-white/50 hidden md:inline">Ikuti Kami:</span>
-                <a href="https://instagram.com" target="_blank"
+                <a href="https://www.instagram.com/local_gocommerce?igsh=MXI1c3I2M2Q1bndkMg==" target="_blank"
                     class="flex items-center gap-1 hover:text-cyan-400 transition-colors group">
                     <svg class="w-3.5 h-3.5 group-hover:scale-110 transition-transform" fill="currentColor"
                         viewBox="0 0 24 24">
@@ -85,17 +85,17 @@
     </div>
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between gap-2 md:gap-8 transition-all duration-700 ease-in-out"
-            :class="isScrolled ? 'h-16 md:h-11' : 'h-16 md:h-11'">
+            :class="isScrolled ? 'h-[52px] md:h-11' : 'h-[52px] md:h-11'">
             <!-- Logo Mobile (Shown only on mobile) -->
             <div class="flex items-center gap-2.5 md:hidden">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
                     <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-9 w-auto rounded-lg" alt="LocalGo Logo">
                     <div class="flex flex-col">
-                        <span class="text-base font-black tracking-tight text-white leading-none">
+                        <span class="text-[17px] font-semibold tracking-tight text-white leading-none">
                             LocalGo
                         </span>
                         <span
-                            class="text-[8px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
+                            class="text-[12px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
                     </div>
                 </a>
             </div>
@@ -108,11 +108,11 @@
                         class="w-auto object-contain rounded-lg transition-all duration-500"
                         :class="isScrolled ? 'h-7 md:h-7' : 'h-8 md:h-8'">
                     <div class="flex flex-col">
-                        <span class="text-white font-black text-sm md:text-xl tracking-tighter leading-none">
+                        <span class="text-white font-semibold text-sm md:text-xl tracking-tighter leading-none">
                             Local<span class="text-white/80">Go</span>
                         </span>
                         <span
-                            class="text-[8px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
+                            class="text-[12px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
                     </div>
                 </a>
             </div>
@@ -189,23 +189,23 @@
                     <!-- Search Toggle -->
                     <button @click="openMobileSearch = !openMobileSearch"
                         class="text-white hover:bg-white/10 rounded-full transition-all active:scale-95 shrink-0"
-                        style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 25px; height: 25px;">
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 22px; height: 22px;">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </button>
 
                     <!-- Cart -->
-                    <div class="relative group text-white shrink-0 scale-110 px-1">
+                    <div class="relative group text-white shrink-0 px-1">
                         <livewire:cart-counter />
                     </div>
 
                     <!-- Menu Hamburger -->
                     <button @click="open = ! open"
                         class="text-white hover:text-cyan-400 hover:bg-white/10 active:scale-95 transition-all duration-300 rounded-full shrink-0"
-                        style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 25px; height: 25px;">
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 22px; height: 22px;">
                             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                             <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -341,7 +341,7 @@
                     <span class="text-lg font-black tracking-tight text-slate-900 leading-none">
                         Local<span class="text-primary">Go</span>
                     </span>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-0.5">Commerce</span>
+                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-0.5">Commerce</span>
                 </div>
             </div>
         </div>
@@ -350,24 +350,24 @@
         <div class="flex-grow bg-white px-0">
             <nav class="flex flex-col py-1">
                 <a href="{{ route('home') }}"
-                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('home') ? 'text-primary' : '' }}">
-                    <span class="uppercase tracking-widest transition-transform">Beranda</span>
+                    class="group flex items-center px-6 py-5 text-[16px] font-medium text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('home') ? 'text-primary' : '' }}">
+                    <span class="normal-case tracking-normal transition-transform">Beranda</span>
                 </a>
                 <a href="{{ route('products.index') }}"
-                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('products.*') ? 'text-primary' : '' }}">
-                    <span class="uppercase tracking-widest transition-transform">Produk</span>
+                    class="group flex items-center px-6 py-5 text-[16px] font-medium text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('products.*') ? 'text-primary' : '' }}">
+                    <span class="normal-case tracking-normal transition-transform">Produk</span>
                 </a>
                 <a href="{{ route('about') }}"
-                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('about') ? 'text-primary' : '' }}">
-                    <span class="uppercase tracking-widest transition-transform">Tentang</span>
+                    class="group flex items-center px-6 py-5 text-[16px] font-medium text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('about') ? 'text-primary' : '' }}">
+                    <span class="normal-case tracking-normal transition-transform">Tentang</span>
                 </a>
                 <a href="{{ route('contact') }}"
-                    class="group flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('contact') ? 'text-primary' : '' }}">
-                    <span class="uppercase tracking-widest transition-transform">Kontak</span>
+                    class="group flex items-center px-6 py-5 text-[16px] font-medium text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 {{ request()->routeIs('contact') ? 'text-primary' : '' }}">
+                    <span class="normal-case tracking-normal transition-transform">Kontak</span>
                 </a>
                 <button @click="window.dispatchEvent(new CustomEvent('open-wishlist-panel'))"
-                    class="group w-full flex items-center px-6 py-5 text-base font-bold text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 text-left">
-                    <span class="uppercase tracking-widest transition-transform">Favorit</span>
+                    class="group w-full flex items-center px-6 py-5 text-[16px] font-medium text-slate-700 hover:text-primary hover:bg-slate-50 transition-all duration-300 border-b border-slate-100 last:border-0 text-left">
+                    <span class="normal-case tracking-normal transition-transform">Favorit</span>
                 </button>
                 <style>
                     .py-5\.5 {
@@ -379,7 +379,7 @@
                 <!-- User Section -->
                 @auth
                     <div class="mt-6 px-5 pb-10">
-                        <div class="text-slate-400 text-[9px] uppercase font-black tracking-[0.2em] mb-3">Akun Saya</div>
+                        <div class="text-slate-400 text-[12px] normal-case font-medium tracking-normal mb-3">Akun Saya</div>
 
                         <a href="{{ route('profile.edit') }}"
                             class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-all group/profile mb-3">
@@ -387,22 +387,22 @@
                                 class="w-9 h-9 rounded-lg border border-slate-200 group-hover/profile:border-primary/20 transition-all shadow-sm" />
                             <div class="overflow-hidden">
                                 <div
-                                    class="text-xs font-bold text-slate-900 truncate group-hover/profile:text-primary transition-colors">
+                                    class="text-sm font-bold text-slate-900 truncate group-hover/profile:text-primary transition-colors">
                                     {{ Auth::user()->name }}
                                 </div>
-                                <div class="text-[9px] text-slate-400 uppercase tracking-widest mt-0.5">Edit Profil</div>
+                                <div class="text-[12px] text-slate-400 normal-case tracking-normal mt-0.5">Edit Profil</div>
                             </div>
                         </a>
 
                         <div class="space-y-0.5">
                             <a href="{{ Auth::user()->isAdmin() ? route('admin.dashboard') : (Auth::user()->isSeller() ? route('vendor.dashboard') : route('dashboard')) }}"
-                                class="group flex items-center justify-between py-2.5 text-xs font-bold text-slate-600 hover:text-primary transition-colors uppercase tracking-widest border-b border-slate-200">
+                                class="group flex items-center justify-between py-2.5 text-[14px] font-medium text-slate-600 hover:text-primary transition-colors normal-case tracking-normal border-b border-slate-200">
                                 Dashboard
                             </a>
                             <form method="POST" action="{{ route('logout') }}" class="mt-0.5">
                                 @csrf
                                 <button type="submit"
-                                    class="group w-full flex items-center justify-between py-2.5 text-xs font-bold text-red-500 hover:text-red-600 transition-colors uppercase tracking-widest text-left">
+                                    class="group w-full flex items-center justify-between py-2.5 text-[14px] font-medium text-red-500 hover:text-red-600 transition-colors normal-case tracking-normal text-left">
                                     Keluar
                                 </button>
                             </form>
@@ -412,11 +412,11 @@
                     <div class="mt-6 px-5 pb-10">
                         <div class="grid grid-cols-1 gap-3">
                             <a href="{{ route('login') }}"
-                                class="w-full py-3.5 bg-primary hover:bg-primary-dark text-white text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl transition-all text-center shadow-lg shadow-primary/10 active:scale-[0.98]">
+                                class="w-full py-2.5 bg-primary hover:bg-primary-dark text-white text-[14px] font-medium normal-case tracking-normal rounded-xl transition-all text-center shadow-lg shadow-primary/10 active:scale-[0.98]">
                                 Masuk Akun
                             </a>
                             <a href="{{ route('register') }}"
-                                class="w-full py-3.5 bg-white border border-slate-200 hover:border-primary/20 text-slate-900 text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl transition-all text-center active:scale-[0.98]">
+                                class="w-full py-2.5 bg-white border border-slate-200 hover:border-primary/20 text-slate-900 text-[14px] font-medium normal-case tracking-normal rounded-xl transition-all text-center active:scale-[0.98]">
                                 Daftar Baru
                             </a>
                         </div>
