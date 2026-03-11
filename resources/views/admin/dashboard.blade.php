@@ -142,7 +142,7 @@
                                     <td class="py-3 md:py-4 text-slate-600">
                                         <div class="font-bold text-slate-800 text-xs md:text-sm">{{ $order->user->name }}</div>
                                         <div class="text-[9px] md:text-[10px] text-slate-400">Shop:
-                                            {{ $order->vendor->shop_name ?? 'LocalGo' }}
+                                            {{ $order->vendor->shop_name ?? 'Sini Jajan' }}
                                         </div>
                                     </td>
                                     <td class="py-4 text-sm">
@@ -176,6 +176,68 @@
             @endif
         </div>
 
+        <!-- Sales Recap -->
+        <div class="lg:col-span-3 bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 p-4 md:p-8 overflow-hidden relative">
+            <div class="flex items-center justify-between mb-4 md:mb-6">
+                <div>
+                    <h3 class="text-lg md:text-xl font-black text-slate-800">Rekap Penjualan</h3>
+                    <p class="text-[10px] md:text-xs text-slate-400 font-medium">Data penjualan 30 hari terakhir</p>
+                </div>
+                <button onclick="window.print()" 
+                    class="flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-black transition-all shadow-lg shadow-slate-200 no-print">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                    </svg>
+                    Cetak Laporan
+                </button>
+            </div>
+
+            @if($stats['sales_recap']->count() > 0)
+                <div class="overflow-x-auto">
+                    <table class="w-full" id="recap-table">
+                        <thead>
+                            <tr class="text-left border-b border-slate-100">
+                                <th class="pb-3 md:pb-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-wider">Tanggal</th>
+                                <th class="pb-3 md:pb-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-wider text-center">Jumlah Pesanan</th>
+                                <th class="pb-3 md:pb-4 text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-wider text-right">Total Penjualan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            @foreach($stats['sales_recap'] as $recap)
+                                <tr class="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
+                                    <td class="py-3 md:py-4 font-bold text-slate-700">{{ \Carbon\Carbon::parse($recap->date)->format('d M Y') }}</td>
+                                    <td class="py-3 md:py-4 text-center font-bold text-slate-600">{{ $recap->total_orders }}</td>
+                                    <td class="py-3 md:py-4 font-black text-slate-800 text-right">Rp {{ number_format($recap->total_sales, 0, ',', '.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-slate-50 font-black text-slate-800">
+                                <td class="py-4 px-4 rounded-l-xl">TOTAL REKAP</td>
+                                <td class="py-4 text-center">{{ $stats['sales_recap']->sum('total_orders') }} Pesanan</td>
+                                <td class="py-4 pr-4 text-right rounded-r-xl text-primary">Rp {{ number_format($stats['sales_recap']->sum('total_sales'), 0, ',', '.') }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @else
+                <div class="text-center py-10 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-100">
+                    <p class="text-slate-400 font-medium">Belum ada data penjualan selesai dalam 30 hari terakhir.</p>
+                </div>
+            @endif
+        </div>
+
+        <style>
+            @media print {
+                .no-print, nav, aside, header, footer, .quick-actions-card { display: none !important; }
+                body { background: white !important; margin: 0 !important; padding: 20px !important; }
+                .glass, .bg-white { box-shadow: none !important; border: 1px solid #eee !important; }
+                .lg\:col-span-3 { grid-column: span 3 / span 3 !important; }
+                #recap-table { border-collapse: collapse !important; width: 100% !important; }
+                #recap-table th, #recap-table td { border: 1px solid #f1f5f9 !important; padding: 12px !important; }
+            }
+        </style>
+
         <!-- Recent Payout Requests -->
         <div class="lg:col-span-3 bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 p-4 md:p-8">
             <div class="flex items-center justify-between mb-4 md:mb-6">
@@ -207,7 +269,7 @@
                             @foreach($stats['recent_payouts'] as $payout)
                                 <tr class="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
                                     <td class="py-3 md:py-4 font-bold text-slate-800 text-xs md:text-sm">
-                                        {{ $payout->vendor->shop_name ?? 'LocalGo' }}
+                                        {{ $payout->vendor->shop_name ?? 'Sini Jajan' }}
                                     </td>
                                     <td class="py-3 md:py-4 font-black text-primary text-xs md:text-sm">Rp
                                         {{ number_format($payout->amount, 0, ',', '.') }}

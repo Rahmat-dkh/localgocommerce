@@ -37,9 +37,18 @@
             <!-- Description -->
             <div class="space-y-2">
                 <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Description</label>
-                <textarea name="description" rows="4" required
+                <textarea name="description" rows="3" required
                     class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900">{{ old('description', $product->description) }}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-1" />
+            </div>
+
+            <!-- Philosophy -->
+            <div class="space-y-2">
+                <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Philosophy</label>
+                <textarea name="philosophy" rows="3"
+                    class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900"
+                    placeholder="Ceritakan sejarah atau filosofi di balik produk ini...">{{ old('philosophy', $product->philosophy) }}</textarea>
+                <x-input-error :messages="$errors->get('philosophy')" class="mt-1" />
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -80,7 +89,7 @@
                     <div id="main-image-preview"
                         class="w-32 h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center overflow-hidden relative {{ $product->image ? '' : 'hidden' }}">
                         @if($product->image)
-                            <img src="{{ asset($product->image) }}" class="w-full h-full object-cover">
+                            <img src="{{ $product->image_url }}" class="w-full h-full object-cover">
                         @else
                             <img src="" class="w-full h-full object-cover">
                         @endif
@@ -118,7 +127,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         @foreach($product->images as $img)
                             <div class="relative group rounded-xl overflow-hidden shadow-sm aspect-square">
-                                <img src="{{ asset($img->image_path) }}" class="w-full h-full object-cover">
+                                <img src="{{ $img->image_url }}" class="w-full h-full object-cover">
                                 <div
                                     class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                     <button form="delete-image-{{ $img->id }}" type="submit"

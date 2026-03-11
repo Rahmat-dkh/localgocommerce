@@ -1,7 +1,7 @@
 @php
     $title = $product->name . ' - ' . ($product->category->name ?? 'Produk');
     $description = Str::limit(strip_tags($product->description), 160);
-    $keywords = $product->name . ', ' . ($product->category->name ?? '') . ', makanan lokal, UMKM, LocalGo';
+    $keywords = $product->name . ', ' . ($product->category->name ?? '') . ', makanan lokal, UMKM, Sini Jajan';
 @endphp
 
 <x-app-layout :title="$title">
@@ -21,7 +21,7 @@
                                             "sku": "{{ $product->id }}",
                                             "brand": {
                                                 "@type": "Brand",
-                                                "name": "LocalGo UMKM"
+                                                "name": "Sini Jajan UMKM"
                                             },
                                             "offers": {
                                                 "@type": "Offer",
@@ -122,7 +122,7 @@
                                 <span
                                     class="text-xl lg:text-2xl font-black text-neutral-dark tracking-tighter">{{ number_format($product->price, 0, ',', '.') }}</span>
                                 <span
-                                    class="text-growth font-bold text-[10px] bg-growth/10 px-2.5 py-0.5 rounded-lg mb-1 ml-1.5">Tersedia</span>
+                                    class="text-growth font-bold text-[10px] bg-growth/10 px-2.5 py-0.5 rounded-lg mb-1 ml-1.5">{{ __('Tersedia') }}</span>
                             </div>
                             <div class="h-8 w-px bg-neutral-dark/5"></div>
                             <div class="flex items-center gap-2">
@@ -140,7 +140,7 @@
                                         class="text-xs md:text-sm font-black text-neutral-dark/40 tracking-widest">{{ number_format($product->averageRating(), 1) }}
                                         ({{ $product->reviews_count ?? $product->reviews_count ?? $product->reviews->count() }})</span>
                                 @else
-                                    <span class="text-xs font-bold text-neutral-dark/40">Belum ada ulasan</span>
+                                    <span class="text-xs font-bold text-neutral-dark/40">{{ __('Belum ada ulasan') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -148,18 +148,30 @@
                         <div class="space-y-4 flex-grow">
                             <div>
                                 <h3 class="text-[10px] font-black text-neutral-dark/30 uppercase tracking-[0.2em] mb-3">
-                                    Informasi Produk</h3>
+                                    {{ __('Informasi Produk') }}</h3>
                                 <p class="text-neutral-dark/60 leading-relaxed text-sm font-medium">
                                     {{ $product->description }}
                                 </p>
                             </div>
+
+                            @if($product->philosophy)
+                                <div class="px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-1.5 h-4 bg-primary rounded-full"></div>
+                                        <h3 class="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest">{{ __('Filosofi Produk') }}</h3>
+                                    </div>
+                                    <p class="text-neutral-dark/80 leading-relaxed text-sm font-medium">
+                                        {{ $product->philosophy }}
+                                    </p>
+                                </div>
+                            @endif
 
 
 
                             <!-- Share Section -->
                             <div class="pt-5 border-t border-neutral-dark/5">
                                 <h3 class="text-[10px] font-black text-neutral-dark/30 uppercase tracking-[0.2em] mb-3">
-                                    Bagikan Produk</h3>
+                                    {{ __('Bagikan Produk') }}</h3>
                                 <div class="flex flex-wrap gap-2.5">
                                     <!-- WhatsApp -->
                                     <a href="https://wa.me/?text={{ urlencode('Cek produk keren ini: ' . $product->name . ' - ' . url()->current()) }}"
@@ -238,11 +250,10 @@
                 <!-- More Products -->
                 <div class="mt-8">
                     <div class="flex items-end justify-between mb-4 px-1">
-                        <h2 class="text-xl lg:text-3xl font-black text-neutral-dark tracking-tight">Koleksi <span
-                                class="text-primary">Lainnya</span></h2>
+                        <h2 class="text-xl lg:text-3xl font-black text-neutral-dark tracking-tight">{{ __('Koleksi ') }}<span
+                                class="text-primary">{{ __('Lainnya') }}</span></h2>
                         <a href="{{ route('products.index') }}"
-                            class="text-xs font-bold text-primary hover:underline">Lihat
-                            Semua</a>
+                            class="text-xs font-bold text-primary hover:underline">{{ __('Lihat Semua') }}</a>
                     </div>
                     <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-8">
                         @foreach(\App\Models\Product::with('category')->withAvg('reviews', 'rating')->withCount('reviews')->where('id', '!=', $product->id)->take(4)->get() as $p)

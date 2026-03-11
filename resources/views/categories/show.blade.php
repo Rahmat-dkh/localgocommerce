@@ -6,8 +6,7 @@
                 class="mb-10 text-center lg:text-left flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8">
                 <div data-aos="fade-right">
 
-                    <h1 class="text-2xl lg:text-4xl font-black text-neutral-dark mb-4 tracking-tighter leading-none">
-                        Kategori <span class="text-primary">{{ $category->name }}</span>.
+                        {{ __('Kategori') }} <span class="text-primary">{{ $category->name }}</span>.
                     </h1>
                     <p class="text-neutral-dark/40 font-medium max-w-xl text-sm lg:text-base">
                         {{ $category->description }}
@@ -29,9 +28,8 @@
                                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                             </svg>
                         </div>
-                        <p class="text-neutral-dark/40 font-bold text-xl mb-4">Belum ada produk di kategori ini.</p>
-                        <a href="{{ route('products.index') }}" class="btn-primary inline-flex items-center gap-2">Jelajahi
-                            Produk Lain</a>
+                        <p class="text-neutral-dark/40 font-bold text-xl mb-4">{{ __('Belum ada produk di kategori ini.') }}</p>
+                        <a href="{{ route('products.index') }}" class="btn-primary inline-flex items-center gap-2">{{ __('Jelajahi Produk Lain') }}</a>
                     </div>
                 @endforelse
             </div>

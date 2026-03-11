@@ -3,12 +3,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div data-aos="fade-right" class="mb-20 text-center lg:text-left">
-                <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">Departemen Utama</div>
+                <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">{{ __('Departemen Utama') }}</div>
                 <h1 class="text-5xl lg:text-7xl font-black text-neutral-dark mb-4 tracking-tighter">
-                    Belanja per <span class="text-innovation">Kategori</span>.
+                    {{ __('Belanja per ') }}<span class="text-innovation">{{ __('Kategori') }}</span>.
                 </h1>
-                <p class="text-neutral-dark/40 font-medium max-w-xl text-lg lg:text-xl">Mudahnya menemukan produk UMKM
-                    berkualitas berdasarkan kebutuhan gaya hidupmu.</p>
+                <p class="text-neutral-dark/40 font-medium max-w-xl text-lg lg:text-xl">{{ __('Mudahnya menemukan produk UMKM berkualitas berdasarkan kebutuhan gaya hidupmu.') }}</p>
             </div>
 
             <!-- Categories Grid -->
@@ -35,8 +34,7 @@
                                 class="text-white text-3xl font-black mb-1 group-hover:-translate-y-1 transition-transform tracking-tight">
                                 {{ $category->name }}
                             </h3>
-                            <p class="text-white/60 font-bold text-xs uppercase tracking-widest">
-                                {{ $category->products_count ?? $category->products()->count() }} Produk
+                                {{ $category->products_count ?? $category->products()->count() }}{{ __(' Produk') }}
                             </p>
                         </div>
 

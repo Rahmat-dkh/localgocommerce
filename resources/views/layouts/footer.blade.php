@@ -10,12 +10,11 @@
                     <img src="{{ asset('images/logo_lokarasa.png') }}" alt=""
                         class="h-16 w-auto object-contain p-2 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 group-hover:scale-105 transition-transform duration-300">
                     <span class="text-white font-black text-2xl tracking-tighter">
-                        Local<span class="text-primary group-hover:text-white transition-colors duration-300">Go</span>
+                        Sini<span class="text-primary group-hover:text-white transition-colors duration-300">Jajan</span>
                     </span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed mb-4 md:mb-8 max-w-sm mx-0">
-                    Menghubungkan Anda dengan kelezatan autentik kuliner Nusantara. Bersama LocalGo, cita rasa lokal
-                    siap memanjakan lidah masyarakat luas.
+                    {{ __('Menghubungkan Anda dengan kelezatan autentik kuliner Nusantara. Bersama Sini Jajan, cita rasa lokal siap memanjakan lidah masyarakat luas.') }}
                 </p>
                 <div class="flex items-center justify-start gap-4">
                     <a href="#"
@@ -39,44 +38,36 @@
 
             <!-- Quick Links -->
             <div data-aos="fade-up" data-aos-delay="100" class="text-left">
-                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">Berbelanja</h4>
+                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">{{ __('Berbelanja') }}</h4>
                 <ul class="space-y-3">
                     <li><a href="{{ route('products.index') }}"
-                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Semua
-                            Produk</a></li>
+                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Semua Produk') }}</a></li>
                     <li><a href="{{ route('categories.index') }}"
-                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Kategori
-                            Pilihan</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Promo
-                            Terbatas</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Produk
-                            Terbaru</a></li>
+                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Kategori Pilihan') }}</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Promo Terbatas') }}</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Produk Terbaru') }}</a></li>
                 </ul>
             </div>
 
             <!-- About & Support -->
             <div data-aos="fade-up" data-aos-delay="200" class="text-left">
-                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">Informasi</h4>
+                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">{{ __('Informasi') }}</h4>
                 <ul class="space-y-3">
                     <li><a href="#"
-                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Tentang
-                            LocalGo</a></li>
-                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Cara
-                            Berjualan</a></li>
+                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Tentang Sini Jajan') }}</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Cara Berjualan') }}</a></li>
                     <li><a href="{{ route('contact') }}"
-                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Pusat
-                            Bantuan</a></li>
+                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Pusat Bantuan') }}</a></li>
                     <li><a href="#"
-                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">Kebijakan
-                            Privasi</a></li>
+                            class="text-slate-400 hover:text-primary transition-colors font-bold text-sm">{{ __('Kebijakan Privasi') }}</a></li>
                 </ul>
             </div>
 
             <!-- Newsletter/Contact -->
             <div data-aos="fade-up" data-aos-delay="300" class="col-span-2 lg:col-span-1 text-left">
-                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">Hubungi Kami</h4>
+                <h4 class="text-white font-black uppercase tracking-widest text-xs mb-4 md:mb-8">{{ __('Hubungi Kami') }}</h4>
                 <div class="space-y-4">
-                    <a href="mailto:localgocommerce@gmail.com"
+                    <a href="mailto:sinijajan@gmail.com"
                         class="flex flex-row items-start gap-4 group/contact">
                         <div
                             class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover/contact:bg-primary transition-all">
@@ -87,9 +78,9 @@
                             </svg>
                         </div>
                         <div class="text-left">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Email Resmi
+                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">{{ __('Email Resmi') }}
                             </p>
-                            <p class="text-white font-bold text-sm">localgocommerce@gmail.com</p>
+                            <p class="text-white font-bold text-sm">sinijajan@gmail.com</p>
                         </div>
                     </a>
 
@@ -104,8 +95,7 @@
                             </svg>
                         </div>
                         <div class="text-left">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">WhatsApp
-                                Resmi
+                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">{{ __('WhatsApp Resmi') }}
                             </p>
                             <p class="text-white font-bold text-sm">+62 857 1296 6082</p>
                         </div>
@@ -113,7 +103,7 @@
 
                     <form action="{{ route('products.index') }}" method="GET"
                         class="relative group mt-8 max-w-sm mx-0">
-                        <input type="text" name="search" placeholder="Cari Produk Lokal..." required
+                        <input type="text" name="search" placeholder="{{ __('Cari Produk Lokal...') }}" required
                             class="w-full bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-white font-bold placeholder:text-slate-500 outline-none">
                         <button type="submit"
                             class="absolute right-2 top-2 p-2 bg-primary rounded-lg text-white shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
@@ -129,7 +119,7 @@
 
         <div class="pt-8 md:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <p class="text-slate-500 text-xs font-bold text-left">
-                &copy; {{ date('Y') }} LocalGo Commerce.
+                &copy; {{ date('Y') }} Sini Jajan.
             </p>
             <div class="flex items-center justify-start gap-6 flex-wrap">
                 <!-- Payment Methods -->

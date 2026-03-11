@@ -14,10 +14,10 @@
     </url>
     @foreach ($categories as $category)
         <url>
-            <loc>{{ route('categories.show', $category) }}</loc>
+            <loc>{{ route('categories.show', $category->slug ?? $category->id) }}</loc>
             <lastmod>{{ $category->updated_at->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.7</priority>
+            <priority>0.8</priority>
         </url>
     @endforeach
     @foreach ($products as $product)

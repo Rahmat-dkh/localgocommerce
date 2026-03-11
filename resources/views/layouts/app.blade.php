@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? config('app.name', 'LocalGo') }} - Marketplace Kuliner Nusantara</title>
+    <title>{{ $title ?? config('app.name', 'Sini Jajan') }} - Marketplace Kuliner Nusantara</title>
     <meta name="description"
-        content="@yield('meta_description', $description ?? 'LocalGo - Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia. Nikmati kelezatan Nusantara langsung di rumah Anda.')">
+        content="@yield('meta_description', $description ?? 'Sini Jajan - Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia. Nikmati kelezatan Nusantara langsung di rumah Anda.')">
     <meta name="keywords"
-        content="@yield('meta_keywords', 'Kuliner Nusantara, makanan lokal, oleh-oleh Indonesia, jajanan pasar, LocalGo')">
+        content="@yield('meta_keywords', 'Kuliner Nusantara, makanan lokal, oleh-oleh Indonesia, jajanan pasar, Sini Jajan')">
+    
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="alternate" hreflang="id" href="{{ url()->current() }}?lang=id">
+    <link rel="alternate" hreflang="en" href="{{ url()->current() }}?lang=en">
+    <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo_lokarasa.png') }}">
@@ -19,16 +25,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ $title ?? config('app.name', 'LocalGo') }} - Marketplace Kuliner Nusantara">
+    <meta property="og:title" content="{{ $title ?? config('app.name', 'Sini Jajan') }} - Marketplace Kuliner Nusantara">
     <meta property="og:description"
         content="{{ $description ?? 'Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia' }}">
     <meta property="og:image" content="{{ asset('images/logo_lokarasa.png') }}">
-    <meta property="og:site_name" content="LocalGo">
+    <meta property="og:site_name" content="Sini Jajan">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ url()->current() }}">
-    <meta name="twitter:title" content="{{ $title ?? config('app.name', 'LocalGo') }}">
+    <meta name="twitter:title" content="{{ $title ?? config('app.name', 'Sini Jajan') }}">
     <meta name="twitter:description"
         content="{{ $description ?? 'Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia' }}">
     <meta name="twitter:image" content="{{ asset('images/logo_lokarasa.png') }}">
@@ -38,7 +44,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "LocalGo",
+        "name": "Sini Jajan",
         "url": "{{ config('app.url') }}",
         "logo": "{{ asset('images/logo_lokarasa.png') }}",
         "description": "Platform e-commerce terpercaya untuk kuliner khas dan makanan lokal Indonesia",
@@ -49,7 +55,7 @@
             "@type": "ContactPoint",
             "telephone": "+62-857-1296-6082",
             "contactType": "Customer Service",
-            "email": "localgocommerce@gmail.com"
+            "email": "sinijajan@gmail.com"
         }
     }
     </script>

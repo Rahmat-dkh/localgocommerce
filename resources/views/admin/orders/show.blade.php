@@ -132,7 +132,7 @@
                             class="w-10 h-10 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-primary font-black uppercase text-xs">
                             {{ substr($order->vendor->shop_name ?? 'L', 0, 1) }}
                         </div>
-                        <h4 class="font-bold text-slate-900">{{ $order->vendor->shop_name ?? 'LocalGo Official' }}</h4>
+                        <h4 class="font-bold text-slate-900">{{ $order->vendor->shop_name ?? 'Sini Jajan Official' }}</h4>
                     </div>
                     @if($order->vendor)
                         <div class="text-[10px] space-y-2 font-bold text-slate-400">

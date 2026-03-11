@@ -44,7 +44,7 @@
         <div class="flex items-center justify-between mb-0.5">
             <span
                 class="text-[11px] md:text-[11px] font-bold text-slate-400 font-medium truncate max-w-[50%]">
-                {{ $product->vendor->shop_name ?? 'LocalGo Official' }}
+                {{ $product->vendor->shop_name ?? 'Sini Jajan Official' }}
             </span>
             @if($product->reviews_avg_rating > 0)
                 <div class="flex items-center gap-0.5">

@@ -37,9 +37,18 @@
             <!-- Description -->
             <div class="space-y-2">
                 <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Description</label>
-                <textarea name="description" rows="4" required
+                <textarea name="description" rows="3" required
                     class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900">{{ old('description') }}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-1" />
+            </div>
+
+            <!-- Philosophy -->
+            <div class="space-y-2">
+                <label class="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Philosophy</label>
+                <textarea name="philosophy" rows="3"
+                    class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900"
+                    placeholder="Ceritakan sejarah atau filosofi di balik produk ini...">{{ old('philosophy') }}</textarea>
+                <x-input-error :messages="$errors->get('philosophy')" class="mt-1" />
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

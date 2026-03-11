@@ -12,12 +12,10 @@
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
                 <h1 class="text-2xl lg:text-5xl font-black text-neutral-dark mb-4 tracking-tighter leading-tight">
-                    Hubungi <span class="text-primary">Kami.</span>
+                    {{ __('Hubungi') }} <span class="text-primary">{{ __('Kami.') }}</span>
                 </h1>
                 <p class="max-w-2xl mx-auto text-sm text-slate-500 font-medium leading-relaxed">
-                    Ada pertanyaan atau ingin bekerjasama? Kami siap membantu pertumbuhan bisnis kuliner Anda. Silakan
-                    hubungi kami
-                    melalui formulir di bawah ini.
+                    {{ __('Ada pertanyaan atau ingin bekerjasama? Kami siap membantu pertumbuhan bisnis kuliner Anda. Silakan hubungi kami melalui formulir di bawah ini.') }}
                 </p>
             </div>
         </div>
@@ -31,7 +29,7 @@
                         <div class="bg-white p-8 rounded-3xl shadow-xl shadow-primary/5 border border-slate-100 h-full">
                             <h2
                                 class="text-sm font-black text-neutral-dark mb-8 tracking-tight uppercase border-b border-slate-50 pb-4">
-                                Informasi Kontak
+                                {{ __('Informasi Kontak') }}
                             </h2>
 
                             <div class="space-y-8">
@@ -47,8 +45,8 @@
                                     <div class="min-w-0">
                                         <p
                                             class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-0.5">
-                                            Email Resmi</p>
-                                        <p class="text-sm font-bold text-slate-900 break-all">localgocommerce@gmail.com
+                                            {{ __('Email Resmi') }}</p>
+                                        <p class="text-sm font-bold text-slate-900 break-all">sinijajan@gmail.com
                                         </p>
                                     </div>
                                 </div>
@@ -65,7 +63,7 @@
                                     <div class="min-w-0">
                                         <p
                                             class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-0.5">
-                                            WhatsApp Resmi</p>
+                                            {{ __('WhatsApp Resmi') }}</p>
                                         <p class="text-sm font-bold text-slate-900">+62 857 1296 6082</p>
                                     </div>
                                 </div>
@@ -84,8 +82,8 @@
                                     <div class="min-w-0">
                                         <p
                                             class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-0.5">
-                                            Lokasi Kami</p>
-                                        <p class="text-sm font-bold text-slate-900">Purworejo, Jawa Tengah, Indonesia
+                                            {{ __('Lokasi Kami') }}</p>
+                                        <p class="text-sm font-bold text-slate-900">{{ __('Purworejo, Jawa Tengah, Indonesia') }}
                                         </p>
                                     </div>
                                 </div>
@@ -96,7 +94,7 @@
                     <!-- Form Column -->
                     <div data-aos="fade-left"
                         class="bg-white p-6 lg:p-8 rounded-3xl shadow-xl shadow-primary/5 border border-slate-100">
-                        <h2 class="text-sm font-black text-neutral-dark mb-5 tracking-tight uppercase">Kirim Pesan</h2>
+                        <h2 class="text-sm font-black text-neutral-dark mb-5 tracking-tight uppercase">{{ __('Kirim Pesan') }}</h2>
 
                         @if(session('success'))
                             <div class="mb-6 p-4 bg-green-50 text-green-700 rounded-2xl font-bold border border-green-100">
@@ -109,36 +107,32 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div class="space-y-2">
                                     <label
-                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Nama
-                                        Lengkap</label>
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">{{ __('Nama Lengkap') }}</label>
                                     <input type="text" name="name" placeholder="John Doe" required
                                         class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                                 </div>
                                 <div class="space-y-2">
                                     <label
-                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Alamat
-                                        Email</label>
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">{{ __('Alamat Email') }}</label>
                                     <input type="email" name="email" placeholder="john@example.com" required
                                         class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                                 </div>
                             </div>
                             <div class="space-y-2">
                                 <label
-                                    class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Subjek
-                                    Pesan</label>
+                                    class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">{{ __('Subjek Pesan') }}</label>
                                 <input type="text" name="subject" placeholder="Kerjasama Tenant Kuliner"
                                     class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300">
                             </div>
                             <div class="space-y-2">
                                 <label
-                                    class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Pesan
-                                    Anda</label>
+                                    class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">{{ __('Pesan Anda') }}</label>
                                 <textarea name="message" rows="4" placeholder="Tuliskan pesan Anda di sini..." required
                                     class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-50 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-bold text-slate-900 text-sm placeholder:text-slate-300"></textarea>
                             </div>
                             <button type="submit"
                                 class="btn-primary w-full py-3 text-sm shadow-2xl shadow-primary/20 bg-primary text-white font-black rounded-xl hover:bg-neutral-dark transition-all duration-500">
-                                Kirim Sekarang
+                                {{ __('Kirim Sekarang') }}
                             </button>
                         </form>
                     </div>

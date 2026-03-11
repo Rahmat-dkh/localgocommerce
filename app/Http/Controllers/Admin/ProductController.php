@@ -42,6 +42,7 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|max:10240', // Changed to image validation
             'whatsapp_number' => 'required|string',
+            'philosophy' => 'nullable|string',
             'gallery_images.*' => 'nullable|image|max:10240',
         ]);
 
@@ -102,6 +103,7 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|max:10240', // Changed to image validation
             'whatsapp_number' => 'required|string',
+            'philosophy' => 'nullable|string',
             'gallery_images.*' => 'nullable|image|max:10240',
         ]);
 

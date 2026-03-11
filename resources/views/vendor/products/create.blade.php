@@ -112,9 +112,21 @@
                                 class="text-[10px] uppercase tracking-widest mb-1.5" />
                             <textarea id="description" name="description"
                                 class="block w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border-transparent focus:bg-white focus:border-primary focus:ring-primary transition-all shadow-sm"
-                                rows="4"
+                                rows="3"
                                 placeholder="Jelaskan detail produk Anda...">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-1" />
+                        </div>
+
+                        <!-- Philosophy -->
+                        <div>
+                            <x-input-label for="philosophy" value="Filosofi Produk"
+                                class="text-[10px] uppercase tracking-widest mb-1.5" />
+                            <textarea id="philosophy" name="philosophy"
+                                class="block w-full px-4 py-3 text-sm rounded-xl bg-slate-50 border-transparent focus:bg-white focus:border-primary focus:ring-primary transition-all shadow-sm"
+                                rows="3"
+                                placeholder="Ceritakan sejarah atau filosofi di balik produk ini...">{{ old('philosophy') }}</textarea>
+                            <p class="text-[10px] text-slate-400 mt-1 font-medium italic">*Opsional: Bagikan cerita unik untuk menarik pembeli.</p>
+                            <x-input-error :messages="$errors->get('philosophy')" class="mt-1" />
                         </div>
 
                         <div class="pt-4">

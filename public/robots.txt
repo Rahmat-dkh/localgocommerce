@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: /sitemap.xml
+Sitemap: https://sinijajan.com/sitemap.xml
 
 # Disallow admin & vendor areas from search engines
 Disallow: /admin/

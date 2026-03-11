@@ -1,11 +1,13 @@
-<x-app-layout>
+<x-app-layout title="Koleksi Produk Kuliner Nusantara Terbaik">
+    @section('meta_description', 'Jelajahi berbagai produk kuliner UMKM terbaik dari seluruh Nusantara. Mulai dari camilan tradisional hingga oleh-oleh khas daerah, semua tersedia di Sini Jajan.')
+    @section('meta_keywords', 'produk umkm, kuliner nusantara, jajanan lokal, oleh-oleh indonesia, beli makanan online')
     <div class="pt-6 lg:pt-8 pb-24">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header Section -->
             <div class="text-center mb-8">
-                <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">Eksplorasi UMKM</div>
+                <div class="text-primary font-black uppercase tracking-[0.3em] text-xs mb-4">{{ __('Eksplorasi UMKM') }}</div>
                 <h1 class="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-none mb-6">
-                    Koleksi <span class="text-primary">Terbaik</span>.
+                    {{ __('Koleksi ') }}<span class="text-primary">{{ __('Terbaik') }}</span>.
                 </h1>
             </div>
 
@@ -14,7 +16,7 @@
                 <div class="flex justify-center space-x-12 min-w-max pb-4 px-4 overflow-x-auto no-scrollbar">
                     <a href="{{ route('products.index') }}" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
                         class="text-sm font-bold transition-all relative pb-3 {{ !request('category') && !request()->routeIs('categories.*') ? 'text-primary' : 'text-gray-400 hover:text-primary' }}">
-                        Semua
+                        {{ __('Semua') }}
                         @if(!request('category') && !request()->routeIs('categories.*'))
                             <div class="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-full"></div>
                         @else

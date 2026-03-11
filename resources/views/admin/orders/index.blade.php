@@ -50,7 +50,7 @@
                                         </td>
                                         <td class="px-3 md:px-6 py-3 md:py-4">
                                             <span
-                                                class="text-[11px] md:text-xs font-bold text-slate-600">{{ $order->vendor->shop_name ?? 'LocalGo' }}</span>
+                                                class="text-[11px] md:text-xs font-bold text-slate-600">{{ $order->vendor->shop_name ?? 'Sini Jajan' }}</span>
                                         </td>
                                         <td class="px-3 md:px-6 py-3 md:py-4 text-right">
                                             <span class="text-xs md:text-sm font-black text-primary whitespace-nowrap">Rp

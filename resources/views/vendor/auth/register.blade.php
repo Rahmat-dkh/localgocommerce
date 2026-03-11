@@ -38,7 +38,7 @@
             <x-text-input id="shop_slug" class="block mt-1 w-full px-4 py-3 text-sm rounded-xl bg-slate-50" type="text"
                 name="shop_slug" :value="old('shop_slug')" required placeholder="nama-toko-anda" />
             <p class="text-[10px] text-slate-400 mt-1.5 font-medium">Link ini akan digunakan sebagai alamat toko Anda
-                (contoh: localgocommerce.com/toko/<b>nama-toko</b>). Otomatis terisi dari Nama Toko.</p>
+                (contoh: sinijajan.com/toko/<b>nama-toko</b>). Otomatis terisi dari Nama Toko.</p>
             <x-input-error :messages="$errors->get('shop_slug')" class="mt-1" />
         </div>
 

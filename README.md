@@ -1,4 +1,4 @@
-# 🍛 LocalGo Commerce - Marketplace Kuliner Nusantara 🇮🇩
+# 🍛 Sini Jajan - Marketplace Kuliner Nusantara 🇮🇩
 |
 <p align="center">
   <strong>Menghubungkan Kelezatan Autentik Indonesia ke Meja Makan Anda</strong>
@@ -13,11 +13,11 @@
 
 ---
 
-## 🌟 Tentang LocalGo
+## 🌟 Tentang Sini Jajan
 
-**LocalGo** adalah platform e-commerce modern yang dirancang khusus untuk melestarikan dan memperkenalkan kekayaan kuliner Nusantara. Kami berfokus pada produk makanan khas daerah yang telah dikurasi dengan cermat, memastikan kualitas rasa yang autentik dapat dinikmati oleh masyarakat luas kapan saja dan di mana saja.
+**Sini Jajan** adalah platform e-commerce modern yang dirancang khusus untuk melestarikan dan memperkenalkan kekayaan kuliner Nusantara. Kami berfokus pada produk makanan khas daerah yang telah dikurasi dengan cermat, memastikan kualitas rasa yang autentik dapat dimakan oleh masyarakat luas kapan saja dan di mana saja.
 
-Dengan tagline *"Melestarikan Rasa Nusantara"*, LocalGo hadir bukan hanya sebagai tempat jual beli, tapi sebagai jembatan bagi para pelaku UMKM kuliner di seluruh Indonesia untuk menjangkau pasar nasional secara digital.
+Dengan tagline *"Melestarikan Rasa Nusantara"*, Sini Jajan hadir bukan hanya sebagai tempat jual beli, tapi sebagai jembatan bagi para pelaku UMKM kuliner di seluruh Indonesia untuk menjangkau pasar nasional secara digital.
 
 ---
 
@@ -57,7 +57,7 @@ Aplikasi ini dibangun dengan *cutting-edge technology stack*:
 
 ## 📦 Panduan Instalasi
 
-Ingin menjalankan LocalGo di server lokal Anda? Ikuti panduan ini:
+Ingin menjalankan Sini Jajan di server lokal Anda? Ikuti panduan ini:
 
 ### 1. Persyaratan Sistem
 - PHP >= 8.1
@@ -103,11 +103,11 @@ Akses di `http://127.0.0.1:8000`
 
 Jika Anda memiliki pertanyaan, saran, atau ingin bekerjasama sebagai tenant:
 
-- **Email**: localgocommerce@gmail.com
+- **Email**: sinijajan@gmail.com
 - **Lokasi**: Purworejo, Jawa Tengah, Indonesia
 
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ untuk UMKM Indonesia oleh <strong>LocalGo Team</strong>
+  Dibuat dengan ❤️ untuk UMKM Indonesia oleh <strong>Sini Jajan Team</strong>
 </p>

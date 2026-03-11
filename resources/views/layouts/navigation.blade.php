@@ -38,7 +38,7 @@
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <!-- Left: Social Media Icons -->
             <div class="flex items-center gap-4">
-                <span class="text-white/50 hidden md:inline">Ikuti Kami:</span>
+                <span class="text-white/50 hidden md:inline">{{ __('Ikuti Kami:') }}</span>
                 <a href="https://www.instagram.com/local_gocommerce?igsh=MXI1c3I2M2Q1bndkMg==" target="_blank"
                     class="flex items-center gap-1 hover:text-cyan-400 transition-colors group">
                     <svg class="w-3.5 h-3.5 group-hover:scale-110 transition-transform" fill="currentColor"
@@ -89,13 +89,11 @@
             <!-- Logo Mobile (Shown only on mobile) -->
             <div class="flex items-center gap-2.5 md:hidden">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                    <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-9 w-auto rounded-lg" alt="LocalGo Logo">
+                    <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-9 w-auto rounded-lg" alt="Sini Jajan Logo">
                     <div class="flex flex-col">
                         <span class="text-[17px] font-semibold tracking-tight text-white leading-none">
-                            LocalGo
+                            Sini<span class="text-white/80">Jajan</span>
                         </span>
-                        <span
-                            class="text-[12px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
                     </div>
                 </a>
             </div>
@@ -103,16 +101,14 @@
             <!-- Logo Desktop (Hidden on mobile, shown on md and up) -->
             <div class="hidden md:flex flex-none items-center pr-2">
                 <a href="/"
-                    class="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded-xl transition-all active:scale-95 group">
-                    <img src="{{ asset('images/logo_lokarasa.png') }}" alt="LocalGo"
+                    class="flex items-center gap-2 transition-all active:scale-95 group">
+                    <img src="{{ asset('images/logo_lokarasa.png') }}" alt="Sini Jajan"
                         class="w-auto object-contain rounded-lg transition-all duration-500"
                         :class="isScrolled ? 'h-7 md:h-7' : 'h-8 md:h-8'">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold text-sm md:text-xl tracking-tighter leading-none">
-                            Local<span class="text-white/80">Go</span>
+                            Sini<span class="text-white/80">Jajan</span>
                         </span>
-                        <span
-                            class="text-[12px] font-bold text-white/70 uppercase tracking-[0.1em] mt-0.5">Commerce</span>
                     </div>
                 </a>
             </div>
@@ -122,7 +118,7 @@
                 <div class="w-full max-w-xl">
                     <form action="{{ route('products.index') }}" method="GET" class="relative group w-full">
                         <div class="relative flex items-center">
-                            <input type="text" name="search" placeholder="Cari di LocalGo..."
+                            <input type="text" name="search" placeholder="{{ __('Cari di sini jajan...') }}"
                                 class="w-full bg-white border border-white/30 rounded-xl pl-6 pr-14 py-1.5 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all duration-300">
                             <button type="submit"
                                 class="absolute right-1 top-1 bottom-1 bg-primary text-white hover:bg-neutral-dark rounded-lg px-3.5 mb-0 transition-all duration-300 flex items-center justify-center shadow-lg shadow-primary/20">
@@ -156,18 +152,18 @@
                                 class="absolute right-0 mt-1 w-48 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50"
                                 style="display: none;">
                                 <div class="px-4 py-2 bg-slate-50 border-b border-gray-100">
-                                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Akun Saya</p>
+                                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ __('Akun Saya') }}</p>
                                 </div>
                                 <x-dropdown-link :href="Auth::user()->isAdmin() ? route('admin.dashboard') : (Auth::user()->isSeller() ? route('vendor.dashboard') : route('dashboard'))"
                                     class="block px-4 py-2 text-xs font-bold text-slate-600 hover:text-primary hover:bg-primary/5 transition-colors">
-                                    Dashboard
+                                    {{ __('Dashboard') }}
                                 </x-dropdown-link>
                                 <form method="POST"
                                     action="{{ Auth::user()->isAdmin() ? route('admin.logout') : route('logout') }}">
                                     @csrf
                                     <x-dropdown-link :href="Auth::user()->isAdmin() ? route('admin.logout') : route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"
                                         class="block px-4 py-2 text-xs font-bold text-red-500 hover:bg-red-50 transition-colors">
-                                        Keluar
+                                        {{ __('Keluar') }}
                                     </x-dropdown-link>
                                 </form>
                             </div>
@@ -175,11 +171,11 @@
                     @else
                         <a href="{{ route('login') }}"
                             class="px-4 py-1.5 text-xs font-black text-white rounded-full border-2 border-white hover:bg-white hover:text-primary transition-all duration-300">
-                            Masuk
+                            {{ __('Masuk') }}
                         </a>
                         <a href="{{ route('register') }}"
                             class="px-4 py-1.5 text-xs font-black text-primary bg-white rounded-full border-2 border-white hover:bg-primary-dark hover:text-white transition-all duration-300">
-                            Daftar
+                            {{ __('Daftar') }}
                         </a>
                     @endauth
                 </div>
@@ -222,7 +218,7 @@
         class="md:hidden px-4 pb-3">
         <form action="{{ route('products.index') }}" method="GET" class="relative group">
             <div class="relative flex items-center">
-                <input type="text" name="search" placeholder="Cari di LocalGo..."
+                <input type="text" name="search" placeholder="{{ __('Cari di Sini Jajan...') }}"
                     class="w-full bg-white border border-white/20 rounded-xl pl-5 pr-12 py-2 text-sm text-neutral-dark placeholder-slate-400 focus:ring-2 focus:ring-white/20 transition-all">
                 <button type="submit"
                     class="absolute right-1 top-1 bottom-1 bg-primary text-white rounded-lg px-3 flex items-center justify-center active:scale-95 transition-all">
@@ -241,20 +237,20 @@
         <!-- Left: Categories -->
         <div class="flex-none w-48">
             <!-- Categories -->
-            <div x-data="{ openCategory: false }" class="relative" @click.away="openCategory = false">
+            <div x-data="{ openCategory: false }" class="relative" @click.away="openCategory = false" @mouseenter="openCategory = true" @mouseleave="openCategory = false">
                 <button @click="openCategory = !openCategory"
                     class="flex items-center gap-2 px-4 py-1.5 text-sm font-bold text-white rounded-full transition-all duration-300 hover:bg-white/10 active:scale-95 bg-white/5">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    Kategori
+                    {{ __('Kategori') }}
                 </button>
                 <!-- Dropdown -->
                 <div x-show="openCategory" x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0 translate-y-1"
                     x-transition:enter-end="opacity-100 translate-y-0"
-                    class="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                    class="absolute left-0 top-full w-56 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 pt-1 mt-0">
                     <div class="max-h-80 overflow-y-auto py-2">
                         @php
                             $categories = cache()->remember('navbar_categories', 3600, function () {
@@ -277,19 +273,19 @@
             <div class="flex items-center gap-1 lg:gap-2">
                 <a href="{{ route('home') }}"
                     class="relative px-4 py-1 text-sm font-bold text-white rounded-full transition-all duration-300 hover:bg-white/10 hover:text-cyan-300 whitespace-nowrap group {{ request()->routeIs('home') ? 'text-cyan-300' : '' }}">
-                    Beranda
+                    {{ __('Beranda') }}
                 </a>
                 <a href="{{ route('products.index') }}"
                     class="relative px-4 py-1 text-sm font-bold text-white rounded-full transition-all duration-300 hover:bg-white/10 hover:text-cyan-300 whitespace-nowrap group {{ request()->routeIs('products.*') ? 'text-cyan-300' : '' }}">
-                    Produk
+                    {{ __('Produk') }}
                 </a>
                 <a href="{{ route('about') }}"
                     class="relative px-4 py-1 text-sm font-bold text-white rounded-full transition-all duration-300 hover:bg-white/10 hover:text-cyan-300 whitespace-nowrap group {{ request()->routeIs('about') ? 'text-cyan-300' : '' }}">
-                    Tentang
+                    {{ __('Tentang') }}
                 </a>
                 <a href="{{ route('contact') }}"
                     class="relative px-4 py-1 text-sm font-bold text-white rounded-full transition-all duration-300 hover:bg-white/10 hover:text-cyan-300 whitespace-nowrap group {{ request()->routeIs('contact') ? 'text-cyan-300' : '' }}">
-                    Kontak
+                    {{ __('Kontak') }}
                 </a>
             </div>
         </div>
@@ -336,12 +332,11 @@
             <!-- Left-Aligned Logo & Branding -->
             <div class="flex items-center gap-3">
                 <img src="{{ asset('images/logo_lokarasa.png') }}" class="h-10 w-auto rounded-lg shadow-sm"
-                    alt="LocalGo">
+                    alt="Sini Jajan">
                 <div class="flex flex-col">
                     <span class="text-lg font-black tracking-tight text-slate-900 leading-none">
-                        Local<span class="text-primary">Go</span>
+                        Sini<span class="text-primary">Jajan</span>
                     </span>
-                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-0.5">Commerce</span>
                 </div>
             </div>
         </div>

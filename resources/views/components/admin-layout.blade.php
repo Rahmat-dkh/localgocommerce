@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'LocalGo Admin') }}</title>
+    <title>{{ config('app.name', 'Sini Jajan Admin') }}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo_lokarasa.png') }}">
@@ -34,7 +34,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-center h-14 md:h-16 border-b border-white/5 bg-[#111827]">
                     <a href="/"
-                        class="text-xl md:text-2xl font-black tracking-tighter text-[#E5E7EB] hover:text-[#3B82F6] transition-colors">LocalGo<span
+                        class="text-xl md:text-2xl font-black tracking-tighter text-[#E5E7EB] hover:text-[#3B82F6] transition-colors">Sini Jajan<span
                             class="text-[#3B82F6]">.</span></a>
                 </div>
 

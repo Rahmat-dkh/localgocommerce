@@ -48,7 +48,7 @@
                                     <div
                                         class="h-10 w-10 md:h-12 md:w-12 flex-shrink-0 bg-slate-100 rounded-lg overflow-hidden border border-slate-100">
                                         @if($product->image)
-                                            <img class="h-full w-full object-cover" src="{{ asset($product->image) }}"
+                                            <img class="h-full w-full object-cover" src="{{ $product->image_url }}"
                                                 alt="{{ $product->name }}">
                                         @else
                                             <div class="h-full w-full flex items-center justify-center text-slate-400">

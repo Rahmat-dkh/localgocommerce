@@ -20,6 +20,12 @@ class DashboardController extends Controller
             'total_pending_payouts' => \App\Models\Payout::where('status', 'pending')->count(),
             'recent_orders' => \App\Models\Order::with(['user', 'vendor', 'items.product'])->latest()->take(5)->get(),
             'recent_payouts' => \App\Models\Payout::with('vendor')->latest()->take(5)->get(),
+            'sales_recap' => \App\Models\Order::where('status', 'completed')
+                ->selectRaw('DATE(created_at) as date, COUNT(*) as total_orders, SUM(total_amount) as total_sales')
+                ->groupBy('date')
+                ->orderBy('date', 'desc')
+                ->take(30)
+                ->get(),
         ];
 
         return view('admin.dashboard', compact('stats'));

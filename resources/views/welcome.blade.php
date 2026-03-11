@@ -3,6 +3,8 @@
 
     <!-- Modern 3-Panel Carousel -->
     <div class="bg-white pt-3 pb-2 md:pt-10 md:pb-6 overflow-hidden">
+        <!-- SEO H1 -->
+        <h1 class="sr-only">Sini Jajan - Marketplace Kuliner Nusantara Terpercaya</h1>
         <div x-data="{ 
             active: 1, 
             count: 3,
@@ -66,7 +68,7 @@
                                         x-text="slide.subtitle"></p>
                                     <a href="{{ route('products.index') }}"
                                         class="inline-flex items-center gap-2.5 px-5 py-2.5 md:px-8 md:py-3.5 bg-white text-primary font-black rounded-xl md:rounded-2xl hover:bg-neutral-dark hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 text-[15px] md:text-base group/btn">
-                                        Mulai Belanja
+                                        {{ __('Mulai Belanja') }}
                                         <svg class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -117,7 +119,7 @@
                 @endphp
                 <a href="{{ route('products.index') }}"
                     class="flex-shrink-0 flex items-center gap-2 px-4 py-1.5 bg-primary/5 border border-primary/20 rounded-full active:scale-95 transition-all">
-                    <span class="text-[15px] font-bold text-primary normal-case">Semua</span>
+                    <span class="text-[15px] font-bold text-primary normal-case">{{ __('Semua') }}</span>
                 </a>
 
                 @foreach($categories as $category)
@@ -140,11 +142,11 @@
 
                 <div class="flex items-center justify-between mb-8 relative z-10 gap-4">
                     <h3 class="text-lg md:text-2xl font-black text-neutral-dark whitespace-nowrap">
-                        Produk <span class="text-blue-500">Unggulan</span>
+                        {{ __('Produk') }} <span class="text-blue-500">{{ __('Unggulan') }}</span>
                     </h3>
                     <a href="{{ route('products.index') }}"
                         class="px-4 py-2 bg-blue-50 text-blue-600 font-bold rounded-xl text-xs hover:bg-blue-100 transition-colors whitespace-nowrap">
-                        Lihat Semua
+                        {{ __('Lihat Semua') }}
                     </a>
                 </div>
 
@@ -189,15 +191,14 @@
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-none">Pilihan
-                        <span class="text-primary">Terlaris</span>
+                    <h2 class="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-none">{{ __('Pilihan') }}
+                        <span class="text-primary">{{ __('Terlaris') }}</span>
                     </h2>
                     <span
                         class="bg-innovation/10 text-innovation text-[8px] md:text-[10px] font-black uppercase px-2.5 py-1 rounded-lg">Paling
                         Dicari</span>
                 </div>
-                <a href="{{ route('products.index') }}" class="text-xs font-bold text-primary hover:underline">Lihat
-                    Semua</a>
+                <a href="{{ route('products.index') }}" class="text-xs font-bold text-primary hover:underline">{{ __('Lihat Semua') }}</a>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
@@ -345,7 +346,7 @@
                             Pemberdayaan UMKM <br>Lokal Nusantara.
                         </h2>
                         <p class="text-white/60 text-sm lg:text-base font-medium mb-6 max-w-lg">
-                            Setiap transaksi Anda di LocalGo membantu pengusaha lokal berkembang dan melestarikan
+                            Setiap transaksi Anda di Sini Jajan membantu pengusaha lokal berkembang dan melestarikan
                             warisan
                             kuliner asli Indonesia. Kami hadir dengan sistem transaksi yang aman dan transparan.
                         </p>

@@ -78,7 +78,7 @@
     </form>
 
     <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-        <p class="text-xs font-medium text-slate-500 mb-2">ingin berjualan di LocalGo?</p>
+        <p class="text-xs font-medium text-slate-500 mb-2">ingin berjualan di Sini Jajan?</p>
         <a href="{{ route('vendor.register') }}"
             class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-neutral-dark text-white text-sm font-bold rounded-xl hover:bg-neutral-800 transition-all shadow-md shadow-neutral-dark/20 w-full sm:w-auto">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
